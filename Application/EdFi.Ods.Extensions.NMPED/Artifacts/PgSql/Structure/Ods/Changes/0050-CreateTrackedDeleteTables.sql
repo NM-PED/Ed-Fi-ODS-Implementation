@@ -70,6 +70,14 @@ CREATE TABLE tracked_deletes_nmped.GenderIdentityDescriptor
        CONSTRAINT GenderIdentityDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_nmped.GiftedLevelOfIntegrationDescriptor
+(
+       GiftedLevelOfIntegrationDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT GiftedLevelOfIntegrationDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_nmped.IndustryCredentialDescriptor
 (
        IndustryCredentialDescriptorId INT NOT NULL,
@@ -185,14 +193,6 @@ CREATE TABLE tracked_deletes_nmped.RoadTypeDescriptor
        CONSTRAINT RoadTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
-CREATE TABLE tracked_deletes_nmped.ServiceProviderTypeDescriptor
-(
-       ServiceProviderTypeDescriptorId INT NOT NULL,
-       Id UUID NOT NULL,
-       ChangeVersion BIGINT NOT NULL,
-       CONSTRAINT ServiceProviderTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
-);
-
 CREATE TABLE tracked_deletes_nmped.ServiceSettingDescriptor
 (
        ServiceSettingDescriptorId INT NOT NULL,
@@ -223,6 +223,14 @@ CREATE TABLE tracked_deletes_nmped.SpecialEducationNonComplianceReasonDescriptor
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT SpecialEducationNonComplianceReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_nmped.SpecialEducationReferralCodeDescriptor
+(
+       SpecialEducationReferralCodeDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT SpecialEducationReferralCodeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_nmped.SpecialProgramCodeDescriptor

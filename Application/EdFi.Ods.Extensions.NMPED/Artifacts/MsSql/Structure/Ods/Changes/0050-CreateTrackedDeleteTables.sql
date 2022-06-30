@@ -61,6 +61,13 @@ CREATE TABLE [tracked_deletes_nmped].[GenderIdentityDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_GenderIdentityDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+CREATE TABLE [tracked_deletes_nmped].[GiftedLevelOfIntegrationDescriptor]
+(
+       GiftedLevelOfIntegrationDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_GiftedLevelOfIntegrationDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 CREATE TABLE [tracked_deletes_nmped].[IndustryCredentialDescriptor]
 (
        IndustryCredentialDescriptorId [INT] NOT NULL,
@@ -162,13 +169,6 @@ CREATE TABLE [tracked_deletes_nmped].[RoadTypeDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_RoadTypeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-CREATE TABLE [tracked_deletes_nmped].[ServiceProviderTypeDescriptor]
-(
-       ServiceProviderTypeDescriptorId [INT] NOT NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       CONSTRAINT PK_ServiceProviderTypeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 CREATE TABLE [tracked_deletes_nmped].[ServiceSettingDescriptor]
 (
        ServiceSettingDescriptorId [INT] NOT NULL,
@@ -196,6 +196,13 @@ CREATE TABLE [tracked_deletes_nmped].[SpecialEducationNonComplianceReasonDescrip
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_SpecialEducationNonComplianceReasonDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+CREATE TABLE [tracked_deletes_nmped].[SpecialEducationReferralCodeDescriptor]
+(
+       SpecialEducationReferralCodeDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_SpecialEducationReferralCodeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 CREATE TABLE [tracked_deletes_nmped].[SpecialProgramCodeDescriptor]
 (

@@ -44,6 +44,10 @@ COMMENT ON COLUMN nmped.ExpectedDiplomaTypeDescriptor.ExpectedDiplomaTypeDescrip
 COMMENT ON TABLE nmped.GenderIdentityDescriptor IS 'The gender the person identifies with.';
 COMMENT ON COLUMN nmped.GenderIdentityDescriptor.GenderIdentityDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [nmped].[GiftedLevelOfIntegrationDescriptor] --
+COMMENT ON TABLE nmped.GiftedLevelOfIntegrationDescriptor IS 'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.';
+COMMENT ON COLUMN nmped.GiftedLevelOfIntegrationDescriptor.GiftedLevelOfIntegrationDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [nmped].[IndustryCredentialDescriptor] --
 COMMENT ON TABLE nmped.IndustryCredentialDescriptor IS 'This descriptor describes the Industry Credential for the student''s program.';
 COMMENT ON COLUMN nmped.IndustryCredentialDescriptor.IndustryCredentialDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -114,10 +118,6 @@ COMMENT ON COLUMN nmped.SectionExtension.SessionName IS 'The identifier for the 
 COMMENT ON COLUMN nmped.SectionExtension.NMPEDClassPeriodDescriptorId IS 'Indicates the type of class period for this section.';
 COMMENT ON COLUMN nmped.SectionExtension.PreKClassTypeDescriptorId IS 'Indicated the type of Pre-K participation for this section.';
 
--- Extended Properties [nmped].[ServiceProviderTypeDescriptor] --
-COMMENT ON TABLE nmped.ServiceProviderTypeDescriptor IS 'The type of the service provider.';
-COMMENT ON COLUMN nmped.ServiceProviderTypeDescriptor.ServiceProviderTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
 -- Extended Properties [nmped].[ServiceSettingDescriptor] --
 COMMENT ON TABLE nmped.ServiceSettingDescriptor IS 'The service setting.';
 COMMENT ON COLUMN nmped.ServiceSettingDescriptor.ServiceSettingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -134,6 +134,10 @@ COMMENT ON COLUMN nmped.SpecialEducationEventTypeDescriptor.SpecialEducationEven
 COMMENT ON TABLE nmped.SpecialEducationNonComplianceReasonDescriptor IS 'The special education event non compliance reason.';
 COMMENT ON COLUMN nmped.SpecialEducationNonComplianceReasonDescriptor.SpecialEducationNonComplianceReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [nmped].[SpecialEducationReferralCodeDescriptor] --
+COMMENT ON TABLE nmped.SpecialEducationReferralCodeDescriptor IS 'Required if the child was referred from Part C to B or thru Child Find.';
+COMMENT ON COLUMN nmped.SpecialEducationReferralCodeDescriptor.SpecialEducationReferralCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [nmped].[SpecialProgramCodeDescriptor] --
 COMMENT ON TABLE nmped.SpecialProgramCodeDescriptor IS 'This Code for the special program.';
 COMMENT ON COLUMN nmped.SpecialProgramCodeDescriptor.SpecialProgramCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -148,6 +152,8 @@ COMMENT ON COLUMN nmped.StaffDevelopment.StaffDevelopmentActivityCodeDescriptorI
 COMMENT ON COLUMN nmped.StaffDevelopment.StaffDevelopmentPurposeCodeDescriptorId IS 'The staff development purpose code.';
 COMMENT ON COLUMN nmped.StaffDevelopment.ActivityHours IS 'The hours the activity took.';
 COMMENT ON COLUMN nmped.StaffDevelopment.StaffCreditsEarned IS 'The credits earned by the staff.';
+COMMENT ON COLUMN nmped.StaffDevelopment.MentorTraining IS 'This data will be used to determine whether the Mentor has completed a Mentor Training.';
+COMMENT ON COLUMN nmped.StaffDevelopment.MentorIdUniqueId IS 'The staff ID of the mentor';
 
 -- Extended Properties [nmped].[StaffDevelopmentActivityCodeDescriptor] --
 COMMENT ON TABLE nmped.StaffDevelopmentActivityCodeDescriptor IS 'This descriptor describes the staff development activity code.';
@@ -204,18 +210,7 @@ COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.Student
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.Grade09Entry IS 'This field holds the date when a student entered the ninth grade.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.DentalExaminationVerificationCodeDescriptorId IS 'This code for the dental examination performed.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.MilitaryFamilyDescriptorId IS 'Indicator to identify the military stuats of the student''s family';
-
--- Extended Properties [nmped].[StudentEducationOrganizationAssociationStudentCharacteri_fc9b44] --
-COMMENT ON TABLE nmped.StudentEducationOrganizationAssociationStudentCharacteri_fc9b44 IS 'This collection provides extended fields to record LevelOfIntegration for Gifted Students';
-COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationStudentCharacteri_fc9b44.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationStudentCharacteri_fc9b44.StudentCharacteristicDescriptorId IS 'The characteristic designated for the Student.';
-COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationStudentCharacteri_fc9b44.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
-COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationStudentCharacteri_fc9b44.GiftedLevelOfIntegrationDescriptorId IS 'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only
-                    Valid values are:
-                    1 = Less than 10% of the day (minimum or ''A'')
-                    2 = 11% to 49% of the day (moderate or ''B'')
-                    3 = 50% of the day or more, but not a full day (extensive or ''C'')
-                    4 = Up to a full day or program 3Y/4Y (maximum or ''D'')';
+COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.GiftedLevelOfIntegrationDescriptorId IS 'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.';
 
 -- Extended Properties [nmped].[StudentEducationOrganizationAward] --
 COMMENT ON TABLE nmped.StudentEducationOrganizationAward IS 'The awards a student has earned at a education organization.';
@@ -255,7 +250,6 @@ COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.StudentUSI IS 
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceFrequency IS 'Number of days the student received the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) within the reporting period. A one to two digit number.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceDuration IS 'Number of days the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) service was offered during the reporting period. A one to two digit number not to exceed the number of days within the reporting period. A one to two digit number.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceProviderName IS 'Name of Community Service Provider Entity.';
-COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceProviderTypeDescriptorId IS 'Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceSettingDescriptorId IS 'A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated.';
 
 -- Extended Properties [nmped].[StudentSchoolAggregateSectionAttendance] --
@@ -318,6 +312,7 @@ COMMENT ON COLUMN nmped.StudentSpecialEducationProgramAssociationExtension.Expec
 COMMENT ON COLUMN nmped.StudentSpecialEducationProgramAssociationExtension.BrailleInstruction IS 'Indication for student need for braille instruction.';
 COMMENT ON COLUMN nmped.StudentSpecialEducationProgramAssociationExtension.AlernateInstruction IS 'Indication of whether the special education student is entitled to take alternate assessment.';
 COMMENT ON COLUMN nmped.StudentSpecialEducationProgramAssociationExtension.PrimaryAreaOfExceptionalityDescriptorId IS 'Identification of a studen''s Primary Exceptionality';
+COMMENT ON COLUMN nmped.StudentSpecialEducationProgramAssociationExtension.SpecialEducationReferralCodeDescriptorId IS 'Required if the child was referred from Part C to B or thru Child Find.';
 
 -- Extended Properties [nmped].[StudentSpecialEducationProgramAssociationSpecialEducatio_c2cadc] --
 COMMENT ON TABLE nmped.StudentSpecialEducationProgramAssociationSpecialEducatio_c2cadc IS 'This is documentation.';

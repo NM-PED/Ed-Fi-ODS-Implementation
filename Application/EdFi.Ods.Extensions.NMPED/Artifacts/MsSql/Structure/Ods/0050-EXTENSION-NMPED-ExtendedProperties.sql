@@ -70,6 +70,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'GenderIdentityDescriptor', @level2type=N'COLUMN', @level2name=N'GenderIdentityDescriptorId'
 GO
 
+-- Extended Properties [nmped].[GiftedLevelOfIntegrationDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'GiftedLevelOfIntegrationDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'GiftedLevelOfIntegrationDescriptor', @level2type=N'COLUMN', @level2name=N'GiftedLevelOfIntegrationDescriptorId'
+GO
+
 -- Extended Properties [nmped].[IndustryCredentialDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This descriptor describes the Industry Credential for the student''s program.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'IndustryCredentialDescriptor'
 GO
@@ -180,12 +186,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicated the type of Pre-K participation for this section.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SectionExtension', @level2type=N'COLUMN', @level2name=N'PreKClassTypeDescriptorId'
 GO
 
--- Extended Properties [nmped].[ServiceProviderTypeDescriptor] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of the service provider.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceProviderTypeDescriptor'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceProviderTypeDescriptor', @level2type=N'COLUMN', @level2name=N'ServiceProviderTypeDescriptorId'
-GO
-
 -- Extended Properties [nmped].[ServiceSettingDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The service setting.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceSettingDescriptor'
 GO
@@ -208,6 +208,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The special education event non compliance reason.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SpecialEducationNonComplianceReasonDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SpecialEducationNonComplianceReasonDescriptor', @level2type=N'COLUMN', @level2name=N'SpecialEducationNonComplianceReasonDescriptorId'
+GO
+
+-- Extended Properties [nmped].[SpecialEducationReferralCodeDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Required if the child was referred from Part C to B or thru Child Find.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SpecialEducationReferralCodeDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SpecialEducationReferralCodeDescriptor', @level2type=N'COLUMN', @level2name=N'SpecialEducationReferralCodeDescriptorId'
 GO
 
 -- Extended Properties [nmped].[SpecialProgramCodeDescriptor] --
@@ -234,6 +240,10 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The hours the activity took.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffDevelopment', @level2type=N'COLUMN', @level2name=N'ActivityHours'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The credits earned by the staff.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffDevelopment', @level2type=N'COLUMN', @level2name=N'StaffCreditsEarned'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This data will be used to determine whether the Mentor has completed a Mentor Training.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffDevelopment', @level2type=N'COLUMN', @level2name=N'MentorTraining'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The staff ID of the mentor', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffDevelopment', @level2type=N'COLUMN', @level2name=N'MentorIdUniqueId'
 GO
 
 -- Extended Properties [nmped].[StaffDevelopmentActivityCodeDescriptor] --
@@ -329,22 +339,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This code for 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicator to identify the military stuats of the student''s family', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'MilitaryFamilyDescriptorId'
 GO
-
--- Extended Properties [nmped].[StudentEducationOrganizationAssociationStudentCharacteristicExtension] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This collection provides extended fields to record LevelOfIntegration for Gifted Students', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationStudentCharacteristicExtension'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationStudentCharacteristicExtension', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The characteristic designated for the Student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationStudentCharacteristicExtension', @level2type=N'COLUMN', @level2name=N'StudentCharacteristicDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationStudentCharacteristicExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only
-                    Valid values are:
-                    1 = Less than 10% of the day (minimum or ''A'')
-                    2 = 11% to 49% of the day (moderate or ''B'')
-                    3 = 50% of the day or more, but not a full day (extensive or ''C'')
-                    4 = Up to a full day or program 3Y/4Y (maximum or ''D'')', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationStudentCharacteristicExtension', @level2type=N'COLUMN', @level2name=N'GiftedLevelOfIntegrationDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'GiftedLevelOfIntegrationDescriptorId'
 GO
 
 -- Extended Properties [nmped].[StudentEducationOrganizationAward] --
@@ -415,8 +410,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Number of days the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) service was offered during the reporting period. A one to two digit number not to exceed the number of days within the reporting period. A one to two digit number.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceDuration'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Name of Community Service Provider Entity.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceProviderName'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceProviderTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceSettingDescriptorId'
 GO
@@ -522,6 +515,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indication of whether the special education student is entitled to take alternate assessment.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'AlernateInstruction'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Identification of a studen''s Primary Exceptionality', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'PrimaryAreaOfExceptionalityDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Required if the child was referred from Part C to B or thru Child Find.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'SpecialEducationReferralCodeDescriptorId'
 GO
 
 -- Extended Properties [nmped].[StudentSpecialEducationProgramAssociationSpecialEducationProgramEvent] --

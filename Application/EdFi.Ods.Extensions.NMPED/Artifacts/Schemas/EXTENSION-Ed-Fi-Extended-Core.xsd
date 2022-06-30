@@ -180,6 +180,16 @@
               <xs:documentation>The credits earned by the staff.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="MentorTraining" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>This data will be used to determine whether the Mentor has completed a Mentor Training.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MentorIdUniqueId" type="UniqueId" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The staff ID of the mentor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -748,6 +758,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-GiftedLevelOfIntegrationDescriptor">
+    <xs:annotation>
+      <xs:documentation>This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-IndustryCredentialDescriptor">
     <xs:annotation>
       <xs:documentation>This descriptor describes the Industry Credential for the student's program.</xs:documentation>
@@ -891,17 +912,6 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-ServiceProviderTypeDescriptor">
-    <xs:annotation>
-      <xs:documentation>The type of the service provider.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-ServiceSettingDescriptor">
     <xs:annotation>
       <xs:documentation>The service setting.</xs:documentation>
@@ -938,6 +948,17 @@
   <xs:complexType name="EXTENSION-SpecialEducationNonComplianceReasonDescriptor">
     <xs:annotation>
       <xs:documentation>The special education event non compliance reason.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SpecialEducationReferralCodeDescriptor">
+    <xs:annotation>
+      <xs:documentation>Required if the child was referred from Part C to B or thru Child Find.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -1128,7 +1149,7 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:complexContent>
-      <xs:extension base="EXTENSION-StudentEducationOrganizationAssociationRestriction">
+      <xs:extension base="StudentEducationOrganizationAssociation">
         <xs:sequence>
           <xs:element name="Grade09Entry" type="xs:date" minOccurs="0">
             <xs:annotation>
@@ -1151,205 +1172,16 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="StudentCharacteristic" type="EXTENSION-StudentCharacteristicExtension" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="GiftedLevelOfIntegration" type="EXTENSION-GiftedLevelOfIntegrationDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>This collection provides extended fields to record LevelOfIntegration for Gifted Students</xs:documentation>
+              <xs:documentation>This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-GiftedLevelOfIntegrationDescriptor</ann:Descriptor>
+              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
       </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-StudentEducationOrganizationAssociationRestriction">
-    <xs:annotation>
-      <xs:documentation>Restriction to Student Education Organization Association for replacement of common type with common type extension</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:restriction base="StudentEducationOrganizationAssociation">
-        <xs:sequence>
-          <xs:element name="StudentReference" type="StudentReferenceType">
-            <xs:annotation>
-              <xs:documentation>A reference to the Student.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
-            <xs:annotation>
-              <xs:documentation>A reference to the Education Organization representing the context of the student information.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="StudentIdentificationCode" type="StudentIdentificationCode" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a student.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Sex" type="SexDescriptorReferenceType">
-            <xs:annotation>
-              <xs:documentation>The student's gender as last reported to the education organization.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>SexDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Address" type="Address" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The set of elements that describes an address, including the street address, city, state, and ZIP code.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="InternationalAddress" type="InternationalAddress" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The set of elements that describes an international address.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Telephone" type="Telephone" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The 10-digit telephone number, including the area code, for the person.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ElectronicMail" type="ElectronicMail" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the individual or organization belongs.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ProfileThumbnail" type="ProfileThumbnail" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Locator reference for the student photo. The specification for that reference is left to local definition.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="HispanicLatinoEthnicity" type="xs:boolean" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="OldEthnicity" type="OldEthnicityDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Previous definition of Ethnicity combining Hispanic/Latino and race:
-                      1 - American Indian or Alaskan Native
-                      2 - Asian or Pacific Islander
-                      3 - Black, not of Hispanic origin
-                      4 - Hispanic
-                      5 - White, not of Hispanic origin.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>OldEthnicityDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Race" type="RaceDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>RaceDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="TribalAffiliation" type="TribalAffiliationDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>An American Indian tribe with which the student is affiliated as last reported to the education organization.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>TribalAffiliationDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="LimitedEnglishProficiency" type="LimitedEnglishProficiencyDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication that the student has been identified as limited English proficient by the Language Proficiency Assessment Committee (LPAC), or English proficient.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>LimitedEnglishProficiencyDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Language" type="Language" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The language(s) the individual uses to communicate. It is strongly recommended that entries use only ISO 639-3 language codes.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Disability" type="Disability" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The disability condition(s) that best describes an individual's impairment, as determined by evaluation(s) conducted by the education organization.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ProgramParticipation" type="ProgramParticipation" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>Key programs the student is participating in or receives services from.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="CohortYear" type="CohortYear" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The type and year of a cohort (e.g., 9th grade) the student belongs to as determined by the year that student entered a specific grade.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="StudentIndicator" type="StudentIndicator" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>An indicator or metric computed for the student (e.g., at risk).</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="LoginId" type="IdentificationCode" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The login ID for the user; used for security access control interface.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="AncestryEthnicOrigin" type="AncestryEthnicOriginDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The original peoples or cultures with which the individual identifies.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>AncestryEthnicOriginDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="PrimaryLearningDeviceAwayFromSchool" type="PrimaryLearningDeviceAwayFromSchoolDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The type of device the student uses most often to complete learning activities away from school.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>PrimaryLearningDeviceAwayFromSchoolDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="PrimaryLearningDeviceAccess" type="PrimaryLearningDeviceAccessDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication of whether the primary learning device is shared or not shared with another individual.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>PrimaryLearningDeviceAccessDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="PrimaryLearningDeviceProvider" type="PrimaryLearningDeviceProviderDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The provider of the primary learning device.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>PrimaryLearningDeviceProviderDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="InternetAccessInResidence" type="xs:boolean" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication of whether the student is able to access the internet in their primary place of residence.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="BarrierToInternetAccessInResidence" type="BarrierToInternetAccessInResidenceDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication of the barrier to having internet access in the student’s primary place of residence.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>BarrierToInternetAccessInResidenceDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="InternetAccessTypeInResidence" type="InternetAccessTypeInResidenceDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The primary type of internet service used in the student’s primary place of residence.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>InternetAccessTypeInResidenceDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="InternetPerformanceInResidence" type="InternetPerformanceInResidenceDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>An indication of whether the student can complete the full range of learning activities, including video streaming and assignment upload, without interruptions caused by poor internet performance in their primary place of residence.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>InternetPerformanceInResidenceDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="EXTENSION-StudentProgramAssociationExtension">
@@ -1585,6 +1417,14 @@
           <xs:element name="SpecialEducationProgramService" type="EXTENSION-SpecialEducationProgramServiceExtension" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>This collection provides extended fields to record Special Education Services Fact Template Data.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SpecialEducationReferralCode" type="EXTENSION-SpecialEducationReferralCodeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Required if the child was referred from Part C to B or thru Child Find.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-SpecialEducationReferralCodeDescriptor</ann:Descriptor>
+              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2234,6 +2074,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-GiftedLevelOfIntegrationDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>This field holds the level of integration that represents the amount of service for GIFTED characteristic students only.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-IndustryCredentialDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>This descriptor describes the Industry Credential for the student's program.</xs:documentation>
@@ -2351,15 +2200,6 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-ServiceProviderTypeDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>The type of the service provider.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
   <xs:simpleType name="EXTENSION-ServiceSettingDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The service setting.</xs:documentation>
@@ -2390,6 +2230,15 @@
   <xs:simpleType name="EXTENSION-SpecialEducationNonComplianceReasonDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The special education event non compliance reason.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-SpecialEducationReferralCodeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Required if the child was referred from Part C to B or thru Child Find.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -2532,14 +2381,6 @@
               <xs:documentation>Name of Community Service Provider Entity.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="ServiceProviderType" type="EXTENSION-ServiceProviderTypeDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-ServiceProviderTypeDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="ServiceSetting" type="EXTENSION-ServiceSettingDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated.</xs:documentation>
@@ -2570,33 +2411,6 @@
           <xs:element name="ServiceDuration" type="xs:int" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Service Duration will be required for all other service codes. A value from 1 – 9999 to indicate the number of minutes the service occurs per week. Must calculate service minutes that occur in a service cycle that is not weekly.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-StudentCharacteristicExtension">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Common</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="StudentCharacteristic">
-        <xs:sequence>
-          <xs:element name="GiftedLevelOfIntegrationLevelOfIntegration" type="EXTENSION-LevelOfIntegrationDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>This field holds the level of integration that represents the amount of service for GIFTED characteristic students only
-                                  Valid values are:
-                                  1 = Less than 10% of the day (minimum or 'A')
-                                  2 = 11% to 49% of the day (moderate or 'B')
-                                  3 = 50% of the day or more, but not a full day (extensive or 'C')
-                                  4 = Up to a full day or program 3Y/4Y (maximum or 'D')</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-LevelOfIntegrationDescriptor</ann:Descriptor>
-              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>

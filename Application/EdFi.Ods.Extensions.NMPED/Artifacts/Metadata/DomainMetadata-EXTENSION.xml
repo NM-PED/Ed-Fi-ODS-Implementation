@@ -27,6 +27,9 @@
   <Aggregate root="GenderIdentityDescriptor">
     <Entity table="GenderIdentityDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="GiftedLevelOfIntegrationDescriptor">
+    <Entity table="GiftedLevelOfIntegrationDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="IndustryCredentialDescriptor">
     <Entity table="IndustryCredentialDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -69,9 +72,6 @@
   <Aggregate root="RoadTypeDescriptor">
     <Entity table="RoadTypeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
-  <Aggregate root="ServiceProviderTypeDescriptor">
-    <Entity table="ServiceProviderTypeDescriptor" isA="Descriptor" schema="nmped"/>
-  </Aggregate>
   <Aggregate root="ServiceSettingDescriptor">
     <Entity table="ServiceSettingDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -83,6 +83,9 @@
   </Aggregate>
   <Aggregate root="SpecialEducationNonComplianceReasonDescriptor">
     <Entity table="SpecialEducationNonComplianceReasonDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
+  <Aggregate root="SpecialEducationReferralCodeDescriptor">
+    <Entity table="SpecialEducationReferralCodeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
   <Aggregate root="SpecialProgramCodeDescriptor">
     <Entity table="SpecialProgramCodeDescriptor" isA="Descriptor" schema="nmped"/>
