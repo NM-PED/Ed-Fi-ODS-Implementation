@@ -590,23 +590,6 @@ ALTER TABLE [nmped].[StaffDevelopment] ENABLE TRIGGER [nmped_StaffDevelopment_TR
 GO
 
 
-CREATE TRIGGER [nmped].[nmped_StaffEducationOrganizationDigitalEquity_TR_DeleteTracking] ON [nmped].[StaffEducationOrganizationDigitalEquity] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_deletes_nmped].[StaffEducationOrganizationDigitalEquity](EducationOrganizationId, SchoolYear, StaffUSI, StartDate, Id, ChangeVersion)
-    SELECT  EducationOrganizationId, SchoolYear, StaffUSI, StartDate, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-END
-GO
-
-ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ENABLE TRIGGER [nmped_StaffEducationOrganizationDigitalEquity_TR_DeleteTracking]
-GO
-
-
 CREATE TRIGGER [nmped].[nmped_StudentAwardTypeDescriptor_TR_DeleteTracking] ON [nmped].[StudentAwardTypeDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 

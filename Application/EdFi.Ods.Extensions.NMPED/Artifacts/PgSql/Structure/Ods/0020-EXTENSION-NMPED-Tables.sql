@@ -251,29 +251,6 @@ CREATE TABLE nmped.StaffDevelopmentPurposeCodeDescriptor (
     CONSTRAINT StaffDevelopmentPurposeCodeDescriptor_PK PRIMARY KEY (StaffDevelopmentPurposeCodeDescriptorId)
 ); 
 
--- Table nmped.StaffEducationOrganizationDigitalEquity --
-CREATE TABLE nmped.StaffEducationOrganizationDigitalEquity (
-    EducationOrganizationId INT NOT NULL,
-    SchoolYear SMALLINT NOT NULL,
-    StaffUSI INT NOT NULL,
-    StartDate DATE NOT NULL,
-    EndDate DATE NULL,
-    PrimaryLearningDeviceAwayFromSchoolDescriptorId INT NOT NULL,
-    PrimaryLearningDeviceProviderDescriptorId INT NOT NULL,
-    PrimaryLearningDeviceAccessDescriptorId INT NOT NULL,
-    InternetAccessTypeInResidenceDescriptorId INT NOT NULL,
-    InternetPerformanceInResidenceDescriptorId INT NOT NULL,
-    InternetAccessInResidence BOOLEAN NOT NULL,
-    Discriminator VARCHAR(128) NULL,
-    CreateDate TIMESTAMP NOT NULL,
-    LastModifiedDate TIMESTAMP NOT NULL,
-    Id UUID NOT NULL,
-    CONSTRAINT StaffEducationOrganizationDigitalEquity_PK PRIMARY KEY (EducationOrganizationId, SchoolYear, StaffUSI, StartDate)
-); 
-ALTER TABLE nmped.StaffEducationOrganizationDigitalEquity ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
-ALTER TABLE nmped.StaffEducationOrganizationDigitalEquity ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE nmped.StaffEducationOrganizationDigitalEquity ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
-
 -- Table nmped.StaffExtension --
 CREATE TABLE nmped.StaffExtension (
     StaffUSI INT NOT NULL,

@@ -163,20 +163,6 @@ COMMENT ON COLUMN nmped.StaffDevelopmentActivityCodeDescriptor.StaffDevelopmentA
 COMMENT ON TABLE nmped.StaffDevelopmentPurposeCodeDescriptor IS 'This descriptor describes the staff development purpose.';
 COMMENT ON COLUMN nmped.StaffDevelopmentPurposeCodeDescriptor.StaffDevelopmentPurposeCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
--- Extended Properties [nmped].[StaffEducationOrganizationDigitalEquity] --
-COMMENT ON TABLE nmped.StaffEducationOrganizationDigitalEquity IS 'Digital Equity measures for staff.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.SchoolYear IS 'The school year the digital equity information is being recorded for.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.StartDate IS 'The date the digital equity record started.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.EndDate IS 'The date the digital equity record ended.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.PrimaryLearningDeviceAwayFromSchoolDescriptorId IS 'The primary learning device type used most often by staff to complete schoolwork at home.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.PrimaryLearningDeviceProviderDescriptorId IS 'Indicates whether the school provides a device or not.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.PrimaryLearningDeviceAccessDescriptorId IS 'Defines the primary learning device access.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.InternetAccessTypeInResidenceDescriptorId IS 'Internet access type.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.InternetPerformanceInResidenceDescriptorId IS 'Internet performance code.';
-COMMENT ON COLUMN nmped.StaffEducationOrganizationDigitalEquity.InternetAccessInResidence IS 'Indicates if there is Internet access in the staff''s residece.';
-
 -- Extended Properties [nmped].[StaffExtension] --
 COMMENT ON TABLE nmped.StaffExtension IS '';
 COMMENT ON COLUMN nmped.StaffExtension.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';

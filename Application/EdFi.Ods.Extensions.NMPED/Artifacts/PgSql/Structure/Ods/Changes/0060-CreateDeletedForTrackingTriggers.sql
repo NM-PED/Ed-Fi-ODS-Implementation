@@ -458,19 +458,6 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.StaffDevelopment 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.StaffDevelopment_TR_DelTrkg();
 
-CREATE FUNCTION tracked_deletes_nmped.StaffEducationOrganizationDigitalEquity_TR_DelTrkg()
-    RETURNS trigger AS
-$BODY$
-BEGIN
-    INSERT INTO tracked_deletes_nmped.StaffEducationOrganizationDigitalEquity(EducationOrganizationId, SchoolYear, StaffUSI, StartDate, Id, ChangeVersion)
-    VALUES (OLD.EducationOrganizationId, OLD.SchoolYear, OLD.StaffUSI, OLD.StartDate, OLD.Id, nextval('changes.ChangeVersionSequence'));
-    RETURN NULL;
-END;
-$BODY$ LANGUAGE plpgsql;
-
-CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.StaffEducationOrganizationDigitalEquity 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.StaffEducationOrganizationDigitalEquity_TR_DelTrkg();
-
 CREATE FUNCTION tracked_deletes_nmped.StudentAwardTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$

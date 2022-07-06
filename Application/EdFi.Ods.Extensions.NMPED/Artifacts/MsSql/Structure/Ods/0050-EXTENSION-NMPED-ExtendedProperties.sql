@@ -258,32 +258,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffDevelopmentPurposeCodeDescriptor', @level2type=N'COLUMN', @level2name=N'StaffDevelopmentPurposeCodeDescriptorId'
 GO
 
--- Extended Properties [nmped].[StaffEducationOrganizationDigitalEquity] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Digital Equity measures for staff.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The school year the digital equity information is being recorded for.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'SchoolYear'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a staff.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'StaffUSI'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date the digital equity record started.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'StartDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date the digital equity record ended.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'EndDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The primary learning device type used most often by staff to complete schoolwork at home.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'PrimaryLearningDeviceAwayFromSchoolDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates whether the school provides a device or not.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'PrimaryLearningDeviceProviderDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Defines the primary learning device access.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'PrimaryLearningDeviceAccessDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internet access type.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'InternetAccessTypeInResidenceDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internet performance code.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'InternetPerformanceInResidenceDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates if there is Internet access in the staff''s residece.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationDigitalEquity', @level2type=N'COLUMN', @level2name=N'InternetAccessInResidence'
-GO
-
 -- Extended Properties [nmped].[StaffExtension] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffExtension'
 GO

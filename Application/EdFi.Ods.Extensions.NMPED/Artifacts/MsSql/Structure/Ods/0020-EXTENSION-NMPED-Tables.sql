@@ -374,38 +374,6 @@ CREATE TABLE [nmped].[StaffDevelopmentPurposeCodeDescriptor] (
 ) ON [PRIMARY]
 GO
 
--- Table [nmped].[StaffEducationOrganizationDigitalEquity] --
-CREATE TABLE [nmped].[StaffEducationOrganizationDigitalEquity] (
-    [EducationOrganizationId] [INT] NOT NULL,
-    [SchoolYear] [SMALLINT] NOT NULL,
-    [StaffUSI] [INT] NOT NULL,
-    [StartDate] [DATE] NOT NULL,
-    [EndDate] [DATE] NULL,
-    [PrimaryLearningDeviceAwayFromSchoolDescriptorId] [INT] NOT NULL,
-    [PrimaryLearningDeviceProviderDescriptorId] [INT] NOT NULL,
-    [PrimaryLearningDeviceAccessDescriptorId] [INT] NOT NULL,
-    [InternetAccessTypeInResidenceDescriptorId] [INT] NOT NULL,
-    [InternetPerformanceInResidenceDescriptorId] [INT] NOT NULL,
-    [InternetAccessInResidence] [BIT] NOT NULL,
-    [Discriminator] [NVARCHAR](128) NULL,
-    [CreateDate] [DATETIME2] NOT NULL,
-    [LastModifiedDate] [DATETIME2] NOT NULL,
-    [Id] [UNIQUEIDENTIFIER] NOT NULL,
-    CONSTRAINT [StaffEducationOrganizationDigitalEquity_PK] PRIMARY KEY CLUSTERED (
-        [EducationOrganizationId] ASC,
-        [SchoolYear] ASC,
-        [StaffUSI] ASC,
-        [StartDate] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ADD CONSTRAINT [StaffEducationOrganizationDigitalEquity_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
-GO
-ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ADD CONSTRAINT [StaffEducationOrganizationDigitalEquity_DF_Id] DEFAULT (newid()) FOR [Id]
-GO
-ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ADD CONSTRAINT [StaffEducationOrganizationDigitalEquity_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
-GO
-
 -- Table [nmped].[StaffExtension] --
 CREATE TABLE [nmped].[StaffExtension] (
     [StaffUSI] [INT] NOT NULL,

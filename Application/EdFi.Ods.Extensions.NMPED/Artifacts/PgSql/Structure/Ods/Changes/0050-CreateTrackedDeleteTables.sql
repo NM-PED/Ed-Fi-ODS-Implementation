@@ -267,17 +267,6 @@ CREATE TABLE tracked_deletes_nmped.StaffDevelopmentPurposeCodeDescriptor
        CONSTRAINT StaffDevelopmentPurposeCodeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
-CREATE TABLE tracked_deletes_nmped.StaffEducationOrganizationDigitalEquity
-(
-       EducationOrganizationId INT NOT NULL,
-       SchoolYear SMALLINT NOT NULL,
-       StaffUSI INT NOT NULL,
-       StartDate DATE NOT NULL,
-       Id UUID NOT NULL,
-       ChangeVersion BIGINT NOT NULL,
-       CONSTRAINT StaffEducationOrganizationDigitalEquity_PK PRIMARY KEY (ChangeVersion)
-);
-
 CREATE TABLE tracked_deletes_nmped.StudentAwardTypeDescriptor
 (
        StudentAwardTypeDescriptorId INT NOT NULL,

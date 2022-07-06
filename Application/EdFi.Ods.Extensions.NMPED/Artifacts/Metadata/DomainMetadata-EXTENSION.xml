@@ -99,9 +99,6 @@
   <Aggregate root="StaffDevelopmentPurposeCodeDescriptor">
     <Entity table="StaffDevelopmentPurposeCodeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
-  <Aggregate root="StaffEducationOrganizationDigitalEquity">
-    <Entity table="StaffEducationOrganizationDigitalEquity" schema="nmped"/>
-  </Aggregate>
   <Aggregate root="StudentAwardTypeDescriptor">
     <Entity table="StudentAwardTypeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>

@@ -234,16 +234,6 @@ CREATE TABLE [tracked_deletes_nmped].[StaffDevelopmentPurposeCodeDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_StaffDevelopmentPurposeCodeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-CREATE TABLE [tracked_deletes_nmped].[StaffEducationOrganizationDigitalEquity]
-(
-       EducationOrganizationId [INT] NOT NULL,
-       SchoolYear [SMALLINT] NOT NULL,
-       StaffUSI [INT] NOT NULL,
-       StartDate [DATE] NOT NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       CONSTRAINT PK_StaffEducationOrganizationDigitalEquity PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 CREATE TABLE [tracked_deletes_nmped].[StudentAwardTypeDescriptor]
 (
        StudentAwardTypeDescriptorId [INT] NOT NULL,
