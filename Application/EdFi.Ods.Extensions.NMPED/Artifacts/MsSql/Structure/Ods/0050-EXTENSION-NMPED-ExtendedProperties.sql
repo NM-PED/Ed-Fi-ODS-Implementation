@@ -186,6 +186,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicated the type of Pre-K participation for this section.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'SectionExtension', @level2type=N'COLUMN', @level2name=N'PreKClassTypeDescriptorId'
 GO
 
+-- Extended Properties [nmped].[ServiceProviderTypeDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of the service provider.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceProviderTypeDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceProviderTypeDescriptor', @level2type=N'COLUMN', @level2name=N'ServiceProviderTypeDescriptorId'
+GO
+
 -- Extended Properties [nmped].[ServiceSettingDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The service setting.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'ServiceSettingDescriptor'
 GO
@@ -384,6 +390,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Number of days the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) service was offered during the reporting period. A one to two digit number not to exceed the number of days within the reporting period. A one to two digit number.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceDuration'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Name of Community Service Provider Entity.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceProviderName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceProviderTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceSettingDescriptorId'
 GO

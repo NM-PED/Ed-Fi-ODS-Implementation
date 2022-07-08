@@ -181,6 +181,12 @@ CREATE TABLE nmped.SectionExtension (
 ); 
 ALTER TABLE nmped.SectionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
+-- Table nmped.ServiceProviderTypeDescriptor --
+CREATE TABLE nmped.ServiceProviderTypeDescriptor (
+    ServiceProviderTypeDescriptorId INT NOT NULL,
+    CONSTRAINT ServiceProviderTypeDescriptor_PK PRIMARY KEY (ServiceProviderTypeDescriptorId)
+); 
+
 -- Table nmped.ServiceSettingDescriptor --
 CREATE TABLE nmped.ServiceSettingDescriptor (
     ServiceSettingDescriptorId INT NOT NULL,
@@ -351,6 +357,7 @@ CREATE TABLE nmped.StudentProgramAssociationServiceExtension (
     ServiceFrequency INT NOT NULL,
     ServiceDuration INT NOT NULL,
     ServiceProviderName VARCHAR(255) NULL,
+    ServiceProviderTypeDescriptorId INT NULL,
     ServiceSettingDescriptorId INT NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentProgramAssociationServiceExtension_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, ServiceDescriptorId, StudentUSI)

@@ -9,6 +9,9 @@ Common EdFi.Service additions
     documentation "Name of Community Service Provider Entity."
     is optional
     max length 255
+  descriptor ServiceProviderType
+    documentation "Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO)."
+    is optional
   descriptor ServiceSetting
     documentation "A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated."
     is optional

@@ -298,6 +298,18 @@
     {
       "aggregateRootEntityName": {
         "schema": "nmped",
+        "name": "ServiceProviderTypeDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "nmped",
+          "name": "ServiceProviderTypeDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "nmped",
         "name": "ServiceSettingDescriptor"
       },
       "aggregateEntityNames": [
@@ -1432,6 +1444,31 @@
       "tableNames": {
         "sqlServer": "SectionExtension",
         "postgreSql": "SectionExtension"
+      }
+    },
+    {
+      "schema": "nmped",
+      "name": "ServiceProviderTypeDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "ServiceProviderTypeDescriptor_PK",
+          "identifyingPropertyNames": [
+            "ServiceProviderTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "ServiceProviderTypeDescriptor_PK",
+            "postgreSql": "ServiceProviderTypeDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "The type of the service provider.",
+      "tableNames": {
+        "sqlServer": "ServiceProviderTypeDescriptor",
+        "postgreSql": "ServiceProviderTypeDescriptor"
       }
     },
     {
@@ -5566,6 +5603,66 @@
     {
       "fullName": {
         "schema": "nmped",
+        "name": "FK_ServiceProviderTypeDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "ServiceProviderTypeDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "ServiceProviderTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "ServiceProviderTypeDescriptorId",
+            "postgreSql": "ServiceProviderTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_ServiceProviderTypeDescriptor_Descriptor",
+        "postgreSql": "FK_29f0da_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
         "name": "FK_ServiceSettingDescriptor_Descriptor"
       },
       "cardinality": "OneToOneInheritance",
@@ -7971,6 +8068,66 @@
         "sqlServer": "FK_StudentProgramAssociationExtension_StudentProgramAssociation",
         "postgreSql": "FK_0c120d_StudentProgramAssociation"
       }
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StudentProgramAssociationServiceExtension_ServiceProviderTypeDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "nmped",
+        "name": "ServiceProviderTypeDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "ServiceProviderTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ServiceProviderTypeDescriptorId",
+            "postgreSql": "ServiceProviderTypeDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StudentProgramAssociationServiceExtension"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "ServiceProviderTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ServiceProviderTypeDescriptorId",
+            "postgreSql": "ServiceProviderTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_StudentProgramAssociationServiceExtension_ServiceProviderTypeDescriptor",
+        "postgreSql": "FK_beb1a6_ServiceProviderTypeDescriptor"
+      },
+      "potentiallyLogical": false
     },
     {
       "fullName": {

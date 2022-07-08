@@ -72,6 +72,9 @@
   <Aggregate root="RoadTypeDescriptor">
     <Entity table="RoadTypeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="ServiceProviderTypeDescriptor">
+    <Entity table="ServiceProviderTypeDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="ServiceSettingDescriptor">
     <Entity table="ServiceSettingDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>

@@ -166,6 +166,11 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 ;
 
+ALTER TABLE nmped.ServiceProviderTypeDescriptor ADD CONSTRAINT FK_29f0da_Descriptor FOREIGN KEY (ServiceProviderTypeDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
 ALTER TABLE nmped.ServiceSettingDescriptor ADD CONSTRAINT FK_5c6df0_Descriptor FOREIGN KEY (ServiceSettingDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -375,6 +380,13 @@ ALTER TABLE nmped.StudentProgramAssociationExtension ADD CONSTRAINT FK_0c120d_St
 REFERENCES edfi.StudentProgramAssociation (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 ON DELETE CASCADE
 ;
+
+ALTER TABLE nmped.StudentProgramAssociationServiceExtension ADD CONSTRAINT FK_beb1a6_ServiceProviderTypeDescriptor FOREIGN KEY (ServiceProviderTypeDescriptorId)
+REFERENCES nmped.ServiceProviderTypeDescriptor (ServiceProviderTypeDescriptorId)
+;
+
+CREATE INDEX FK_beb1a6_ServiceProviderTypeDescriptor
+ON nmped.StudentProgramAssociationServiceExtension (ServiceProviderTypeDescriptorId ASC);
 
 ALTER TABLE nmped.StudentProgramAssociationServiceExtension ADD CONSTRAINT FK_beb1a6_ServiceSettingDescriptor FOREIGN KEY (ServiceSettingDescriptorId)
 REFERENCES nmped.ServiceSettingDescriptor (ServiceSettingDescriptorId)

@@ -193,6 +193,14 @@ CREATE TABLE tracked_deletes_nmped.RoadTypeDescriptor
        CONSTRAINT RoadTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_nmped.ServiceProviderTypeDescriptor
+(
+       ServiceProviderTypeDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT ServiceProviderTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_nmped.ServiceSettingDescriptor
 (
        ServiceSettingDescriptorId INT NOT NULL,

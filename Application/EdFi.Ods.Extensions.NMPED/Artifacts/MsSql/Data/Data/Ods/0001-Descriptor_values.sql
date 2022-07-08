@@ -740,7 +740,6 @@ values ('uri://nmped.org/NMPEDClassPeriodDescriptor','PO','Pull-out','Pull-out')
 INSERT INTO nmped.NMPEDClassPeriodDescriptor(NMPEDClassPeriodDescriptorId) values (@@IDENTITY);
 
 
-/* removed this descriptor 22/23 SY
 -- Service Provider Type Descriptor 
 INSERT INTO edfi.Descriptor ([Namespace], [CodeValue], [ShortDescription], [Description]) 
 values ('uri://nmped.org/ServiceProviderTypeDescriptor','01','Community-Based Organization','Community-Based Organization');
@@ -769,7 +768,7 @@ INSERT INTO nmped.ServiceProviderTypeDescriptor(ServiceProviderTypeDescriptorId)
 INSERT INTO edfi.Descriptor ([Namespace], [CodeValue], [ShortDescription], [Description]) 
 values ('uri://nmped.org/ServiceProviderTypeDescriptor','07','Voluntee','Voluntee');
 INSERT INTO nmped.ServiceProviderTypeDescriptor(ServiceProviderTypeDescriptorId) values (@@IDENTITY);
-*/
+
 
 /*Service Setting*/
 INSERT INTO edfi.Descriptor ([Namespace], [CodeValue], [ShortDescription], [Description]) 

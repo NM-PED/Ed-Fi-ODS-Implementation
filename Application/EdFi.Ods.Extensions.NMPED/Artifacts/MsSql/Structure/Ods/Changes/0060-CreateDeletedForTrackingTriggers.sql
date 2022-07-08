@@ -429,6 +429,24 @@ ALTER TABLE [nmped].[RoadTypeDescriptor] ENABLE TRIGGER [nmped_RoadTypeDescripto
 GO
 
 
+CREATE TRIGGER [nmped].[nmped_ServiceProviderTypeDescriptor_TR_DeleteTracking] ON [nmped].[ServiceProviderTypeDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[ServiceProviderTypeDescriptor](ServiceProviderTypeDescriptorId, Id, ChangeVersion)
+    SELECT  d.ServiceProviderTypeDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.ServiceProviderTypeDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [nmped].[ServiceProviderTypeDescriptor] ENABLE TRIGGER [nmped_ServiceProviderTypeDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [nmped].[nmped_ServiceSettingDescriptor_TR_DeleteTracking] ON [nmped].[ServiceSettingDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 

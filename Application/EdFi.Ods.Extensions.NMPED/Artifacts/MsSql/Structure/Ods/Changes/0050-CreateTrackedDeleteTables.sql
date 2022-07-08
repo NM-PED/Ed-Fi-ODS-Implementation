@@ -169,6 +169,13 @@ CREATE TABLE [tracked_deletes_nmped].[RoadTypeDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_RoadTypeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+CREATE TABLE [tracked_deletes_nmped].[ServiceProviderTypeDescriptor]
+(
+       ServiceProviderTypeDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_ServiceProviderTypeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 CREATE TABLE [tracked_deletes_nmped].[ServiceSettingDescriptor]
 (
        ServiceSettingDescriptorId [INT] NOT NULL,

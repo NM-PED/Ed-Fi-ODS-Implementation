@@ -828,6 +828,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-ServiceProviderTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of the service provider.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-ServiceSettingDescriptor">
     <xs:annotation>
       <xs:documentation>The service setting.</xs:documentation>
@@ -2067,6 +2078,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ServiceProviderTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of the service provider.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-ServiceSettingDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The service setting.</xs:documentation>
@@ -2246,6 +2266,14 @@
           <xs:element name="ServiceProviderName" type="EXTENSION-ServiceProviderName" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Name of Community Service Provider Entity.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ServiceProviderType" type="EXTENSION-ServiceProviderTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ServiceProviderTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
             </xs:annotation>
           </xs:element>
           <xs:element name="ServiceSetting" type="EXTENSION-ServiceSettingDescriptorReferenceType" minOccurs="0">

@@ -118,6 +118,10 @@ COMMENT ON COLUMN nmped.SectionExtension.SessionName IS 'The identifier for the 
 COMMENT ON COLUMN nmped.SectionExtension.NMPEDClassPeriodDescriptorId IS 'Indicates the type of class period for this section.';
 COMMENT ON COLUMN nmped.SectionExtension.PreKClassTypeDescriptorId IS 'Indicated the type of Pre-K participation for this section.';
 
+-- Extended Properties [nmped].[ServiceProviderTypeDescriptor] --
+COMMENT ON TABLE nmped.ServiceProviderTypeDescriptor IS 'The type of the service provider.';
+COMMENT ON COLUMN nmped.ServiceProviderTypeDescriptor.ServiceProviderTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [nmped].[ServiceSettingDescriptor] --
 COMMENT ON TABLE nmped.ServiceSettingDescriptor IS 'The service setting.';
 COMMENT ON COLUMN nmped.ServiceSettingDescriptor.ServiceSettingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -236,6 +240,7 @@ COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.StudentUSI IS 
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceFrequency IS 'Number of days the student received the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) within the reporting period. A one to two digit number.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceDuration IS 'Number of days the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) service was offered during the reporting period. A one to two digit number not to exceed the number of days within the reporting period. A one to two digit number.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceProviderName IS 'Name of Community Service Provider Entity.';
+COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceProviderTypeDescriptorId IS 'Provide the role of the individual who is providing the service for Expanded and Enriched Learning Time and Opportunities (EELTO).';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceSettingDescriptorId IS 'A description of when the service occurs. Required for Community School Programs (CSP) if the service occurred outside of the instructional day.  Otherwise value should not be populated.';
 
 -- Extended Properties [nmped].[StudentSchoolAggregateSectionAttendance] --

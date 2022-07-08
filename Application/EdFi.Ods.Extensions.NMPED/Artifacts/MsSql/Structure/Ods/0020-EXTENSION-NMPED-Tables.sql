@@ -272,6 +272,15 @@ GO
 ALTER TABLE [nmped].[SectionExtension] ADD CONSTRAINT [SectionExtension_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
 GO
 
+-- Table [nmped].[ServiceProviderTypeDescriptor] --
+CREATE TABLE [nmped].[ServiceProviderTypeDescriptor] (
+    [ServiceProviderTypeDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [ServiceProviderTypeDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [ServiceProviderTypeDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
 -- Table [nmped].[ServiceSettingDescriptor] --
 CREATE TABLE [nmped].[ServiceSettingDescriptor] (
     [ServiceSettingDescriptorId] [INT] NOT NULL,
@@ -519,6 +528,7 @@ CREATE TABLE [nmped].[StudentProgramAssociationServiceExtension] (
     [ServiceFrequency] [INT] NOT NULL,
     [ServiceDuration] [INT] NOT NULL,
     [ServiceProviderName] [NVARCHAR](255) NULL,
+    [ServiceProviderTypeDescriptorId] [INT] NULL,
     [ServiceSettingDescriptorId] [INT] NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [StudentProgramAssociationServiceExtension_PK] PRIMARY KEY CLUSTERED (

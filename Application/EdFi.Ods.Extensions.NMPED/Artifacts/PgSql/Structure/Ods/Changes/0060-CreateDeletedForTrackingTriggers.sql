@@ -333,6 +333,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.RoadTypeDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.RoadTypeDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_nmped.ServiceProviderTypeDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_nmped.ServiceProviderTypeDescriptor(ServiceProviderTypeDescriptorId, Id, ChangeVersion)
+    SELECT OLD.ServiceProviderTypeDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.ServiceProviderTypeDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.ServiceProviderTypeDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.ServiceProviderTypeDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_nmped.ServiceSettingDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
