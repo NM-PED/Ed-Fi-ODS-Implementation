@@ -27,6 +27,9 @@
   <Aggregate root="GenderIdentityDescriptor">
     <Entity table="GenderIdentityDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="GiftedLevelOfIntegrationDescriptor">
+    <Entity table="GiftedLevelOfIntegrationDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="IndustryCredentialDescriptor">
     <Entity table="IndustryCredentialDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -84,6 +87,9 @@
   <Aggregate root="SpecialEducationNonComplianceReasonDescriptor">
     <Entity table="SpecialEducationNonComplianceReasonDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="SpecialEducationReferralCodeDescriptor">
+    <Entity table="SpecialEducationReferralCodeDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="SpecialProgramCodeDescriptor">
     <Entity table="SpecialProgramCodeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -95,9 +101,6 @@
   </Aggregate>
   <Aggregate root="StaffDevelopmentPurposeCodeDescriptor">
     <Entity table="StaffDevelopmentPurposeCodeDescriptor" isA="Descriptor" schema="nmped"/>
-  </Aggregate>
-  <Aggregate root="StaffEducationOrganizationDigitalEquity">
-    <Entity table="StaffEducationOrganizationDigitalEquity" schema="nmped"/>
   </Aggregate>
   <Aggregate root="StudentAwardTypeDescriptor">
     <Entity table="StudentAwardTypeDescriptor" isA="Descriptor" schema="nmped"/>
