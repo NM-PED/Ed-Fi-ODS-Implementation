@@ -1,5 +1,5 @@
-Domain Entity StudentSpecialEducationProgramAssociationSpecialEducationProgramEvent
-    documentation "This is documentation."
+Domain Entity StudentSpecialEducationProgramAssociationProgramEvent
+    documentation "This resourse is used to record events for a student in a Special Education Program"
     association EdFi.StudentSpecialEducationProgramAssociation
         documentation "The student program association."
         is part of identity
