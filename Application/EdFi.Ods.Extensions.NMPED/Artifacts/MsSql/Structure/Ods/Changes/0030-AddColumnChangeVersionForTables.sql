@@ -4,6 +4,9 @@ ALTER TABLE [nmped].[LocalEducationAgencyTransportation] ADD [ChangeVersion] [BI
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[nmped].[StaffDevelopment]') AND name = 'ChangeVersion')
 ALTER TABLE [nmped].[StaffDevelopment] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[nmped].[StaffEducationOrganizationDigitalEquity]') AND name = 'ChangeVersion')
+ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
+
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[nmped].[StudentEducationOrganizationAward]') AND name = 'ChangeVersion')
 ALTER TABLE [nmped].[StudentEducationOrganizationAward] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 

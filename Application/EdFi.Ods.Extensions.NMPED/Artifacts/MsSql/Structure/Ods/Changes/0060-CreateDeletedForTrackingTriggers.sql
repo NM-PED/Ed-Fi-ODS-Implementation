@@ -160,24 +160,6 @@ ALTER TABLE [nmped].[GenderIdentityDescriptor] ENABLE TRIGGER [nmped_GenderIdent
 GO
 
 
-CREATE TRIGGER [nmped].[nmped_GiftedLevelOfIntegrationDescriptor_TR_DeleteTracking] ON [nmped].[GiftedLevelOfIntegrationDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_deletes_nmped].[GiftedLevelOfIntegrationDescriptor](GiftedLevelOfIntegrationDescriptorId, Id, ChangeVersion)
-    SELECT  d.GiftedLevelOfIntegrationDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.GiftedLevelOfIntegrationDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [nmped].[GiftedLevelOfIntegrationDescriptor] ENABLE TRIGGER [nmped_GiftedLevelOfIntegrationDescriptor_TR_DeleteTracking]
-GO
-
-
 CREATE TRIGGER [nmped].[nmped_IndustryCredentialDescriptor_TR_DeleteTracking] ON [nmped].[IndustryCredentialDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -519,24 +501,6 @@ ALTER TABLE [nmped].[SpecialEducationNonComplianceReasonDescriptor] ENABLE TRIGG
 GO
 
 
-CREATE TRIGGER [nmped].[nmped_SpecialEducationReferralCodeDescriptor_TR_DeleteTracking] ON [nmped].[SpecialEducationReferralCodeDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_deletes_nmped].[SpecialEducationReferralCodeDescriptor](SpecialEducationReferralCodeDescriptorId, Id, ChangeVersion)
-    SELECT  d.SpecialEducationReferralCodeDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.SpecialEducationReferralCodeDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [nmped].[SpecialEducationReferralCodeDescriptor] ENABLE TRIGGER [nmped_SpecialEducationReferralCodeDescriptor_TR_DeleteTracking]
-GO
-
-
 CREATE TRIGGER [nmped].[nmped_SpecialProgramCodeDescriptor_TR_DeleteTracking] ON [nmped].[SpecialProgramCodeDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -605,6 +569,23 @@ END
 GO
 
 ALTER TABLE [nmped].[StaffDevelopment] ENABLE TRIGGER [nmped_StaffDevelopment_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [nmped].[nmped_StaffEducationOrganizationDigitalEquity_TR_DeleteTracking] ON [nmped].[StaffEducationOrganizationDigitalEquity] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[StaffEducationOrganizationDigitalEquity](EducationOrganizationId, SchoolYear, StaffUSI, StartDate, Id, ChangeVersion)
+    SELECT  EducationOrganizationId, SchoolYear, StaffUSI, StartDate, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [nmped].[StaffEducationOrganizationDigitalEquity] ENABLE TRIGGER [nmped_StaffEducationOrganizationDigitalEquity_TR_DeleteTracking]
 GO
 
 

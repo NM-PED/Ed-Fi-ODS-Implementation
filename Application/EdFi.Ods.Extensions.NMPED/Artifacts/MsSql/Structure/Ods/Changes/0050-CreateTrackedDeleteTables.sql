@@ -61,13 +61,6 @@ CREATE TABLE [tracked_deletes_nmped].[GenderIdentityDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_GenderIdentityDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-CREATE TABLE [tracked_deletes_nmped].[GiftedLevelOfIntegrationDescriptor]
-(
-       GiftedLevelOfIntegrationDescriptorId [INT] NOT NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       CONSTRAINT PK_GiftedLevelOfIntegrationDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 CREATE TABLE [tracked_deletes_nmped].[IndustryCredentialDescriptor]
 (
        IndustryCredentialDescriptorId [INT] NOT NULL,
@@ -204,13 +197,6 @@ CREATE TABLE [tracked_deletes_nmped].[SpecialEducationNonComplianceReasonDescrip
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_SpecialEducationNonComplianceReasonDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-CREATE TABLE [tracked_deletes_nmped].[SpecialEducationReferralCodeDescriptor]
-(
-       SpecialEducationReferralCodeDescriptorId [INT] NOT NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       CONSTRAINT PK_SpecialEducationReferralCodeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 CREATE TABLE [tracked_deletes_nmped].[SpecialProgramCodeDescriptor]
 (
        SpecialProgramCodeDescriptorId [INT] NOT NULL,
@@ -240,6 +226,16 @@ CREATE TABLE [tracked_deletes_nmped].[StaffDevelopmentPurposeCodeDescriptor]
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_StaffDevelopmentPurposeCodeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+CREATE TABLE [tracked_deletes_nmped].[StaffEducationOrganizationDigitalEquity]
+(
+       EducationOrganizationId [INT] NOT NULL,
+       SchoolYear [SMALLINT] NOT NULL,
+       StaffUSI [INT] NOT NULL,
+       StartDate [DATE] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_StaffEducationOrganizationDigitalEquity PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 CREATE TABLE [tracked_deletes_nmped].[StudentAwardTypeDescriptor]
 (

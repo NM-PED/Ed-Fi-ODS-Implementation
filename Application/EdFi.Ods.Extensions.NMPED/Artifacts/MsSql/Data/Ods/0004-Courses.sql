@@ -1,5 +1,3 @@
-begin transaction;
-
 INSERT INTO [edfi].[Course]
            ([CourseCode]
            ,[EducationOrganizationId]
@@ -960,6 +958,3 @@ VALUES
 ('0352',35000000,'Cybersecurity', 1, (select descriptorid from edfi.descriptor where namespace like '%academicsubjectdescriptor%' and codevalue ='4'),'Cybersecurity lays a foundation of understanding cyber law and policy,  networking technology basics and risk assessment.', getdate(), getdate()),
 ('0353',35000000,'Cyber and Society', 1, (select descriptorid from edfi.descriptor where namespace like '%academicsubjectdescriptor%' and codevalue ='4'),'This course introduces student to the foundational concept of security, coding and robotics through project-driven, hands-on learning.', getdate(), getdate()),
 ('0354',35000000,'Art and Computer Science', 1, (select descriptorid from edfi.descriptor where namespace like '%academicsubjectdescriptor%' and codevalue ='4'),'This course will allow students to learn programming in a medium that is expressive in different ways while covering the basics of computer Science and programming.', getdate(), getdate());
-
-
-commit;

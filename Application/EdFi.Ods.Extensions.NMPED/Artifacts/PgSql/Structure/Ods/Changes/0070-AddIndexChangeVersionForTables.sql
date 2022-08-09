@@ -2,6 +2,8 @@ CREATE INDEX IF NOT EXISTS UX_a13cc7_ChangeVersion ON nmped.LocalEducationAgency
 
 CREATE INDEX IF NOT EXISTS UX_62d69c_ChangeVersion ON nmped.StaffDevelopment(ChangeVersion);
 
+CREATE INDEX IF NOT EXISTS UX_f6e59f_ChangeVersion ON nmped.StaffEducationOrganizationDigitalEquity(ChangeVersion);
+
 CREATE INDEX IF NOT EXISTS UX_4d41c1_ChangeVersion ON nmped.StudentEducationOrganizationAward(ChangeVersion);
 
 CREATE INDEX IF NOT EXISTS UX_7a0db5_ChangeVersion ON nmped.StudentSchoolAggregateSectionAttendance(ChangeVersion);

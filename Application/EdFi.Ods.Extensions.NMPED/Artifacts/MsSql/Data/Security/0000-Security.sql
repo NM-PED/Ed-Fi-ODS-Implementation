@@ -100,10 +100,6 @@ VALUES ('studentSpecialEducationProgramAssociationSpecialEducationProgramEvent',
 --        ,@NMPEDDescrioptorsClaimId,@ApplicationId);
 
 INSERT INTO ResourceClaims (DisplayName, ResourceName, ClaimName, ParentResourceClaimId, Application_ApplicationId) VALUES
---new 22/23
-('giftedLevelOfIntegrationDescriptor','giftedLevelOfIntegrationDescriptor','http://ed-fi.org/ods/identity/claims/nmped/giftedLevelOfIntegrationDescriptor',@DescriptorsClaimId,@ApplicationId),
-('specialEducationReferralCodeDescriptor','specialEducationReferralCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/specialEducationReferralCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
-
 ('annualReviewDelayReasonDescriptor','annualReviewDelayReasonDescriptor','http://ed-fi.org/ods/identity/claims/nmped/annualReviewDelayReasonDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('dentalExaminationVerificationCodeDescriptor','dentalExaminationVerificationCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/dentalExaminationVerificationCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('digitalEquityInternetAccessTypeDescriptor','digitalEquityInternetAccessTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/digitalEquityInternetAccessTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
@@ -125,7 +121,7 @@ INSERT INTO ResourceClaims (DisplayName, ResourceName, ClaimName, ParentResource
 ('programDeliveryMethodDescriptor','programDeliveryMethodDescriptor','http://ed-fi.org/ods/identity/claims/nmped/programDeliveryMethodDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('programIntensityDescriptor','programIntensityDescriptor','http://ed-fi.org/ods/identity/claims/nmped/programIntensityDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('roadTypeDescriptor','roadTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/roadTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
--- ('serviceProviderTypeDescriptor','serviceProviderTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/serviceProviderTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
+('serviceProviderTypeDescriptor','serviceProviderTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/serviceProviderTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('serviceSettingDescriptor','serviceSettingDescriptor','http://ed-fi.org/ods/identity/claims/nmped/serviceSettingDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('specialEducationEventReasonDescriptor','specialEducationEventReasonDescriptor','http://ed-fi.org/ods/identity/claims/nmped/specialEducationEventReasonDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('specialEducationEventTypeDescriptor','specialEducationEventTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/specialEducationEventTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
@@ -134,7 +130,7 @@ INSERT INTO ResourceClaims (DisplayName, ResourceName, ClaimName, ParentResource
 ('specialProgramCodeDescriptor','specialProgramCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/specialProgramCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('staffDevelopmentActivityCodeDescriptor','staffDevelopmentActivityCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/staffDevelopmentActivityCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('staffDevelopmentPurposeCodeDescriptor','staffDevelopmentPurposeCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/staffDevelopmentPurposeCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
---('studentAwardLanguageDescriptor','studentAwardLanguageDescriptor','http://ed-fi.org/ods/identity/claims/nmped/studentAwardLanguageDescriptor',@DescriptorsClaimId,@ApplicationId),
+('studentAwardLanguageDescriptor','studentAwardLanguageDescriptor','http://ed-fi.org/ods/identity/claims/nmped/studentAwardLanguageDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('studentAwardTypeDescriptor','studentAwardTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/studentAwardTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('transportationCategoryDescriptor','transportationCategoryDescriptor','http://ed-fi.org/ods/identity/claims/nmped/transportationCategoryDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('transportationSetCodeDescriptor','transportationSetCodeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/transportationSetCodeDescriptor',@DescriptorsClaimId,@ApplicationId),
@@ -144,50 +140,3 @@ INSERT INTO ResourceClaims (DisplayName, ResourceName, ClaimName, ParentResource
 ('vehicleFuelTypeDescriptor','vehicleFuelTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleFuelTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('vehicleRouteDescriptor','vehicleRouteDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleRouteDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('vehicleTypeDescriptor','vehicleTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleTypeDescriptor',@DescriptorsClaimId,@ApplicationId);
-
--- limit access to Ed orgs, programs, and courses
-begin transaction
-
-
--- change course and program so they are not inheritting from relationshipBasedData
-update resourceClaims
-Set ParentResourceClaimId = NULL
-where displayName in ( 'program', 'course');
-
--- give read permissions for all applications
-insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
-SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
-	FROM ClaimSets
-	JOIN Actions
-		ON Actions.ActionName = 'Read'
-	JOIN ResourceClaims
-		ON displayName in ( 'program', 'course');
-
--- give full control for admin app
-insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
-SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
-	FROM ClaimSets
-	JOIN Actions
-		ON Actions.ActionName != 'Read'
-		AND ClaimSetName = 'Ed-Fi ODS Admin App'
-	JOIN ResourceClaims
-		ON displayName in ( 'program', 'course');
-
--- take actions other then read away for sandbox users on everything Ed Org related
-delete ClaimSetResourceClaims
-where ResourceClaim_ResourceClaimId = 
-	(Select ResourceClaimId
-	FROM ResourceClaims
-	where ResourceName like 'educationOrganizations')
-and ClaimSet_ClaimSetId IN
-	(SELECT claimSetId
-	FROM claimSets
-	where ClaimSetName in ( 'Ed-Fi Sandbox'))
-and Action_ActionId NOT IN
-	(SELECT actionId
-	FROM actions
-	where actionName in ('Read')
-	);
-	
-commit;
-
