@@ -17,7 +17,7 @@ Domain Entity NmStudentAssessment
         is optional
     descriptor ItemDescriptionCode
         documentation "Code that further describes the assessment."
-        is optional
+        is part of identity
     descriptor ScoringModelCode
         documentation "The Measurement used to determine the outcomes the respective assessment."
         is optional

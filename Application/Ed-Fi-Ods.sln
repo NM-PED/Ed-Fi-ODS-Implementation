@@ -93,9 +93,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.WebApi", "EdFi.Ods
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Api.IntegrationTests", "..\..\Ed-Fi-ODS\tests\EdFi.Ods.Api.IntegrationTests\EdFi.Ods.Api.IntegrationTests.csproj", "{3ED34C57-BFEF-4FA1-9497-28D7D611D1B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.NMPED", "EdFi.Ods.Extensions.NMPED\EdFi.Ods.Extensions.NMPED.csproj", "{9A12AB99-E3FD-44EE-B962-53277623A8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Extensions.NMPED", "EdFi.Ods.Extensions.NMPED\EdFi.Ods.Extensions.NMPED.csproj", "{9A12AB99-E3FD-44EE-B962-53277623A8EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.NmAssessments", "EdFi.Ods.Extensions.NmAssessments\EdFi.Ods.Extensions.NmAssessments.csproj", "{9A12AB99-E3FD-44EE-B962-53277623A8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Extensions.NmAssessments", "EdFi.Ods.Extensions.NmAssessments\EdFi.Ods.Extensions.NmAssessments.csproj", "{F8107970-C04D-4D57-A7E9-71350F980B5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,6 +211,10 @@ Global
 		{9A12AB99-E3FD-44EE-B962-53277623A8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A12AB99-E3FD-44EE-B962-53277623A8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A12AB99-E3FD-44EE-B962-53277623A8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8107970-C04D-4D57-A7E9-71350F980B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8107970-C04D-4D57-A7E9-71350F980B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8107970-C04D-4D57-A7E9-71350F980B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8107970-C04D-4D57-A7E9-71350F980B5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,18 +7,18 @@ CREATE TABLE nmassessments.ItemDescriptionCodeDescriptor (
 -- Table nmassessments.NmStudentAssessment --
 CREATE TABLE nmassessments.NmStudentAssessment (
     EducationOrganizationId INT NOT NULL,
+    ItemDescriptionCodeDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
     TestDate DATE NOT NULL,
     TestDescriptionDescriptorId INT NOT NULL,
     StandardAchievedCodeDescriptorId INT NULL,
-    ItemDescriptionCodeDescriptorId INT NULL,
     ScoringModelCodeDescriptorId INT NULL,
     RawScore INT NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
     LastModifiedDate TIMESTAMP NOT NULL,
     Id UUID NOT NULL,
-    CONSTRAINT NmStudentAssessment_PK PRIMARY KEY (EducationOrganizationId, StudentUSI, TestDate, TestDescriptionDescriptorId)
+    CONSTRAINT NmStudentAssessment_PK PRIMARY KEY (EducationOrganizationId, ItemDescriptionCodeDescriptorId, StudentUSI, TestDate, TestDescriptionDescriptorId)
 ); 
 ALTER TABLE nmassessments.NmStudentAssessment ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 ALTER TABLE nmassessments.NmStudentAssessment ALTER COLUMN Id SET DEFAULT gen_random_uuid();
