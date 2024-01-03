@@ -21,9 +21,16 @@
  * Email:	collin.neville@ped.nm.gov
  * Date:	07/12/2023
  * Alt Desc: Removed all of the extra columns that PED did not collect.
+ *
+ *
+ * Alt Id:	003 (Increment value each change)
+ * By:		Collin Neville | App Dev I
+ * Email:	collin.neville@ped.nm.gov
+ * Date:	12/11/2023
+ * Alt Desc: Added grade level, StudentUSI.
  */
 
-CREATE OR ALTER VIEW nmped_rpt.vw_students AS 
+CREATE OR ALTER     VIEW [nmped_rpt].[vw_students] AS 
 
 SELECT DISTINCT
 	--standard school/district columns
@@ -36,11 +43,14 @@ SELECT DISTINCT
 
 	--resource documentation starts
 	,[S].StudentUniqueId
+	,[S].StudentUSI						--Alt Id: 003
 	,[S].BirthDate
 	,[S].DateEnteredUS
 	,[S].FirstName	
 	,[S].MiddleName		
-	,[S].LastSurname																						
+	,[S].LastSurname				
+	,[GradeLevel].CodeValue [GradeLevel] --Alt Id: 003
+
 	--table CreateDate/LastModifiedDate
 	,[S].CreateDate										
 	,[S].LastModifiedDate
@@ -52,3 +62,7 @@ FROM
 
 	JOIN nmped_rpt.vw_district_location VDL WITH (NOLOCK)
 		ON VDL.EducationOrganizationId_School = SSA.SchoolId
+
+	--Alt Id: 003
+	LEFT JOIN edfi.Descriptor GradeLevel WITH (NOLOCK)
+		ON GradeLevel.DescriptorId = SSA.EntryGradeLevelDescriptorId

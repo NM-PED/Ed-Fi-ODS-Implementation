@@ -15,9 +15,15 @@
  * Date:	04/19/2023
  * Alt Desc: Added CTE to the view to grab all Descriptors after noticing significant
  *           performance issues when accessing descriptor fields.
+ *
+ * Alt Id:	002 (Increment value each change)
+ * By:		Jon Hickam | Contractor
+ * Email:	jon@redglobeinc.com
+ * Date:	12/17/2023
+ * Alt Desc: Added staff employment.
  */
-
-CREATE OR ALTER VIEW nmped_rpt.vw_staffs AS 
+ 
+CREATE OR ALTER       VIEW [nmped_rpt].[vw_staffs] AS 
 
 --Alt Id: 001 - New CTE using control tables for descriptors
 WITH cte_Descriptors AS (
@@ -119,22 +125,27 @@ SELECT DISTINCT
 	--table CreateDate/LastModifiedDate
 	,S.CreateDate										
 	,S.LastModifiedDate
-	,SEOEA.BeginDate AssignmentBeginDate
-	,SEOEA.EndDate AssignmentEndDate
+
+	/* Alt Id: 002 Start Block*/ 
+	,SEOEA.BeginDate								[AssignmentBeginDate]
+	,SEOEA.EndDate									[AssignmentEndDate]
 	,StaffEmployment.HireDate
-	,StaffEmployment.EndDate EmployementEndDate
+	,StaffEmployment.EndDate						[EmploymentEndDate]
+	/* Alt Id: 002 End Block*/ 
 FROM 
 	edfi.Staff S WITH (NOLOCK)
 
 	JOIN edfi.StaffEducationOrganizationAssignmentAssociation SEOEA WITH (NOLOCK)
 		ON SEOEA.StaffUSI = S.StaffUSI
 
-	LEFT JOIN edfi.School assignmentSchool
+	LEFT JOIN edfi.School assignmentSchool WITH (NOLOCK)
 		ON SEOEA.EducationOrganizationId = assignmentSchool.SchoolId
 
-	JOIN edfi.StaffEducationOrganizationEmploymentAssociation StaffEmployment
-		ON SEOEA.EducationOrganizationId = StaffEmployment.EducationOrganizationId
-		OR StaffEmployment.EducationOrganizationId = assignmentSchool.LocalEducationAgencyId
+	--Alt Id: 002
+	JOIN edfi.StaffEducationOrganizationEmploymentAssociation StaffEmployment WITH (NOLOCK)
+		ON StaffEmployment.StaffUSI = SEOEA.StaffUSI
+		AND (SEOEA.EducationOrganizationId = StaffEmployment.EducationOrganizationId
+		OR StaffEmployment.EducationOrganizationId = assignmentSchool.LocalEducationAgencyId)
 
 	LEFT JOIN edfi.StaffElectronicMail SEM WITH (NOLOCK)
 		ON SEM.StaffUSI = S.StaffUSI

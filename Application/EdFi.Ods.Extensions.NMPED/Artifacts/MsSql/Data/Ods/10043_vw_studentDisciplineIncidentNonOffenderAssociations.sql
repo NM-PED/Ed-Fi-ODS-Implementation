@@ -11,7 +11,7 @@
  *
  */
 
-CREATE OR ALTER VIEW nmped_rpt.vw_studentDisciplineIncidentNonOffenderAssociation AS 
+CREATE OR ALTER   VIEW [nmped_rpt].[vw_studentDisciplineIncidentNonOffenderAssociation] AS 
 
 SELECT  
 		VDL.EducationOrganizationId_District,
@@ -24,7 +24,10 @@ SELECT
 		edfi.Student.StudentUSI,
 		DisciplineIncidentParticipationCode.CodeValue AS [DisciplineIncidentParticipationCode],
 		DisciplineIncidentParticipationCode.Description AS [DisciplineIncidentParticipationDescription],
-        edfi.Descriptor.Description AS [Incident Description], 
+		SDINOA.IncidentIdentifier,
+		Behavior.CodeValue AS [IncidentBehaviorCode],
+        Behavior.[Description] AS [IncidentBehaviorDescription], 
+		DI.IncidentDate,
         SDINOA.Discriminator,
 		SDINOA.CreateDate,
 		SDINOA.LastModifiedDate,
@@ -38,8 +41,16 @@ FROM    edfi.StudentDisciplineIncidentNonOffenderAssociation SDINOA WITH (NOLOCK
 		INNER JOIN edfi.Student WITH (NOLOCK)
 			ON SDINOA.StudentUSI = edfi.Student.StudentUSI 
 
-		LEFT JOIN edfi.Descriptor WITH (NOLOCK)
-			ON SDINOA.IncidentIdentifier = edfi.Descriptor.DescriptorId
+		INNER JOIN edfi.DisciplineIncident DI WITH (NOLOCK)
+			ON (DI.IncidentIdentifier = SDINOA.IncidentIdentifier
+			AND DI.SchoolId = SDINOA.SchoolId)
+
+		INNER JOIN edfi.StudentDisciplineIncidentBehaviorAssociation SDIBA WITH (NOLOCK)
+			ON (SDIBA.IncidentIdentifier = SDINOA.IncidentIdentifier
+			AND SDIBA.SchoolId = SDINOA.SchoolId)
+
+		LEFT JOIN edfi.Descriptor Behavior WITH (NOLOCK) --
+			ON (Behavior.DescriptorId = SDIBA.BehaviorDescriptorId)
 
 		LEFT JOIN edfi.StudentDisciplineIncidentNonOffenderAssociationDisciplineIncidentParticipationCode SDINOADIPC  WITH (NOLOCK)
 			ON SDINOADIPC.IncidentIdentifier = SDINOA.IncidentIdentifier
@@ -48,3 +59,4 @@ FROM    edfi.StudentDisciplineIncidentNonOffenderAssociation SDINOA WITH (NOLOCK
 
 		LEFT JOIN edfi.Descriptor DisciplineIncidentParticipationCode WITH (NOLOCK) 
 			ON DisciplineIncidentParticipationCode.DescriptorId = SDINOADIPC.DisciplineIncidentParticipationCodeDescriptorId
+GO

@@ -36,10 +36,11 @@ SELECT
 	,StaffUniqueId
 	,FirstName
 	,LastSurname
-	,LocalCourseCode
-	,SchoolYear
+	,SSA.LocalCourseCode
+	,CO.CourseCode AS [StateCourseCode]
+	,SSA.SchoolYear
 	,SectionIdentifier
-	,SessionName
+	,SSA.SessionName
 	,BeginDate
 	,ClassroomPosition.CodeValue	[ClassroomPositionCode]
 	,ClassroomPosition.Description	[ClassroomPositionDescription]
@@ -63,4 +64,9 @@ FROM
 
 	JOIN nmped_rpt.vw_district_location VDL WITH (NOLOCK)
 		ON VDL.EducationOrganizationId_School = SSA.SchoolId
+
+	LEFT JOIN edfi.CourseOffering CO
+		ON (CO.LocalCourseCode = SSA.LocalCourseCode
+		AND CO.SessionName = SSA.SessionName
+		AND CO.SchoolId = SSA.SchoolId)
 GO
