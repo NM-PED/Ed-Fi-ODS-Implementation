@@ -194,7 +194,7 @@
               <xs:documentation>The hours the activity took.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="StaffCreditsEarned" type="xs:int" minOccurs="0">
+          <xs:element name="StaffCreditsEarned" type="EXTENSION-StaffCreditsEarned" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The credits earned by the staff.</xs:documentation>
             </xs:annotation>
@@ -2432,6 +2432,18 @@
       <xs:minInclusive value="0" />
       <xs:totalDigits value="5" />
       <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-StaffCreditsEarned">
+    <xs:annotation>
+      <xs:documentation>The credits earned by the staff.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="7" />
+      <xs:fractionDigits value="2" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

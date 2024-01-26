@@ -1550,10 +1550,10 @@
         {
           "propertyName": "StaffCreditsEarned",
           "propertyType": {
-            "dbType": "Int32",
+            "dbType": "Decimal",
             "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
+            "precision": 7,
+            "scale": 2,
             "isNullable": true
           },
           "description": "The credits earned by the staff.",

@@ -298,7 +298,7 @@ CREATE TABLE [nmped].[StaffDevelopment] (
     [StaffDevelopmentActivityCodeDescriptorId] [INT] NOT NULL,
     [StaffDevelopmentPurposeCodeDescriptorId] [INT] NULL,
     [ActivityHours] [INT] NOT NULL,
-    [StaffCreditsEarned] [INT] NULL,
+    [StaffCreditsEarned] [DECIMAL](7, 2) NULL,
     [MentorTraining] [BIT] NULL,
     [MentorIdUniqueId] [NVARCHAR](32) NULL,
     [Discriminator] [NVARCHAR](128) NULL,
