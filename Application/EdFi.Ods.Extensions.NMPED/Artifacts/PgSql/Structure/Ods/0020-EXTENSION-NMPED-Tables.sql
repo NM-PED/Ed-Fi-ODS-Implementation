@@ -201,7 +201,7 @@ CREATE TABLE nmped.StaffDevelopment (
     StaffDevelopmentActivityCodeDescriptorId INT NOT NULL,
     StaffDevelopmentPurposeCodeDescriptorId INT NULL,
     ActivityHours INT NOT NULL,
-    StaffCreditsEarned INT NULL,
+    StaffCreditsEarned DECIMAL(7, 2) NULL,
     MentorTraining BOOLEAN NULL,
     MentorIdUniqueId VARCHAR(32) NULL,
     Discriminator VARCHAR(128) NULL,

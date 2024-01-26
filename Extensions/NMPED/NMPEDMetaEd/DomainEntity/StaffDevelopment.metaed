@@ -21,9 +21,11 @@ descriptor StaffDevelopmentPurposeCode
 integer ActivityHours
     documentation "The hours the activity took."
     is required
-integer StaffCreditsEarned
+decimal StaffCreditsEarned
   documentation "The credits earned by the staff."
   is optional
+  total digits 7
+  decimal places 2
 bool MentorTraining
     documentation "This data will be used to determine whether the Mentor has completed a Mentor Training."
     is optional
