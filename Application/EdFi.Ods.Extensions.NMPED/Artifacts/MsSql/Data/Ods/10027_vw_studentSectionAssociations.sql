@@ -27,6 +27,12 @@
 * Date:      11/17/2023
 * Alt Desc: Added State Course Code
 
+
+* Alt Id:   004
+* By:		Jon hickam
+* Date		12/13/23
+*alt desc:	Add enrollment and exit dates
+
  */
 
 CREATE OR ALTER   VIEW [nmped_rpt].[vw_studentSectionAssociations] AS 
@@ -67,10 +73,15 @@ SELECT DISTINCT
 	,SSA.SchoolId
 	,SSA.SchoolYear
 	,SSA.SectionIdentifier
+
+	-- Session Dates
+	,SESS.BeginDate AS [SessionBeginDate]
+	,SESS.EndDate AS [SessionEndDate]
+
 	,SSA.SessionName
 	,AttemptStatus.CodeValue			[AttemptStatusCode]
 	,AttemptStatus.Description			[AttemptStatusDescription]
-	,EndDate
+	,SSA.EndDate
 	,HomeroomIndicator	
 	,RepeatIdentifier.CodeValue			[RepeatIdentifierCode]
 	,RepeatIdentifier.Description		[RepeatIdentifierDescription]
@@ -84,8 +95,15 @@ SELECT DISTINCT
 	,SSA.CreateDate										
 	,SSA.LastModifiedDate
 	,SSA.Id AS [StudentSectionAssociation_Id]
+
+	,SSA_School.EntryDate
+	,SSA_School.ExitWithdrawDate
 FROM
 	edfi.StudentSectionAssociation SSA WITH (NOLOCK)
+
+	INNER JOIN edfi.[Session] SESS
+		ON (SESS.SessionName = SSA.SessionName 
+		AND SESS.SchoolId = SSA.SchoolId)
 
 	JOIN edfi.Student S WITH (NOLOCK) 
 		ON S.StudentUSI = SSA.StudentUSI

@@ -77,6 +77,10 @@ SELECT
 	  ,SSA.SessionName
 	  ,SSA.SchoolYear
 
+	  -- Session Dates
+	  ,SESS.BeginDate AS [SessionBeginDate]
+	  ,SESS.EndDate AS [SessionEndDate]
+
 	  -- Other Section Information
 	  ,SSA.BeginDate AS [SectionBeginDate]
 	  ,SSA.EndDate AS [SectionEndDate]
@@ -124,6 +128,10 @@ INNER JOIN [edfi].[CourseOffering] CO WITH (NOLOCK)
 	ON (CO.LocalCourseCode = SSA.LocalCourseCode
 		AND CO.SessionName = SSA.SessionName
 		AND CO.SchoolId = SSA.SchoolId)
+
+INNER JOIN edfi.[Session] SESS
+		ON (SESS.SessionName = SSA.SessionName 
+		AND SESS.SchoolId = SSA.SchoolId)
 
 INNER JOIN [nmped_rpt].[vw_Courses] C WITH (NOLOCK)
 	ON (C.CourseCode = CO.CourseCode)

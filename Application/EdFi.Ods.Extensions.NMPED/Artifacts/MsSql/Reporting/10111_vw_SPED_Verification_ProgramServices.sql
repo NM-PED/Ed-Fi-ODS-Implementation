@@ -115,15 +115,15 @@ SELECT DISTINCT
 	,GSPA.Id AS [GeneralStudentProgramAssociationId]
 	
 	--services subcollection
-	,STRING_AGG(ISNULL(SpecialEducationProgramService.CodeValue,'None'), ',') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceCode]
-	,STRING_AGG(ISNULL(SpecialEducationProgramService.[Description],'None'), ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceDescription]
-	,STRING_AGG(ISNULL(Staff_Service.StaffUniqueId,'None'), ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceStaffUniqueId]
-	,STRING_AGG(Staff_Service.StaffUSI, ',') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceStaffUSI]
-	,STRING_AGG(SSEPASEPS.PrimaryIndicator, ',') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS [PrimaryIndicator]
-	,STRING_AGG(SSEPASEPS.ServiceBeginDate, ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceBeginDate
-	,STRING_AGG(SSEPASEPS.ServiceEndDate, ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceEndDate
-	,STRING_AGG(SSEPASEPSE.IntegratedServicesStatus, ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS IntegratedServicesStatus  
-	,STRING_AGG(SSEPASEPSE.ServiceDuration, ',')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceDuration
+	,STRING_AGG(ISNULL(SpecialEducationProgramService.CodeValue,'None'), ';') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceCode]
+	,STRING_AGG(ISNULL(SpecialEducationProgramService.[Description],'None'), ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceDescription]
+	,STRING_AGG(ISNULL(Staff_Service.StaffUniqueId,'None'), ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceStaffUniqueId]
+	,STRING_AGG(Staff_Service.StaffUSI, ';') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS	[SpecialEducationProgramServiceStaffUSI]
+	,STRING_AGG(SSEPASEPS.PrimaryIndicator, ';') WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS [PrimaryIndicator]
+	,STRING_AGG(SSEPASEPS.ServiceBeginDate, ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceBeginDate
+	,STRING_AGG(SSEPASEPS.ServiceEndDate, ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceEndDate
+	,STRING_AGG(SSEPASEPSE.IntegratedServicesStatus, ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS IntegratedServicesStatus  
+	,STRING_AGG(SSEPASEPSE.ServiceDuration, ';')WITHIN GROUP (ORDER BY SSEPASEPS.PrimaryIndicator DESC) AS ServiceDuration
 --	--end
 
 FROM 

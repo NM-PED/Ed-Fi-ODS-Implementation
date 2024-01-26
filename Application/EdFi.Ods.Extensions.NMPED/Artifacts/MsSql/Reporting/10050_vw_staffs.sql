@@ -21,10 +21,15 @@
  * Email:	jon@redglobeinc.com
  * Date:	12/17/2023
  * Alt Desc: Added staff employment.
+ *
+ * Alt Id:	003
+ * By:		Collin Neville | App Dev 1
+ * Email:	collin.neville@ped.nm.gov
+ * Date:	01/04/2024
+ * Alt Desc: Stuffed multiple emails into one row
  */
  
-CREATE OR ALTER       VIEW [nmped_rpt].[vw_staffs] AS 
-
+CREATE OR ALTER         VIEW [nmped_rpt].[vw_staffs] AS 
 --Alt Id: 001 - New CTE using control tables for descriptors
 WITH cte_Descriptors AS (
 	SELECT
@@ -80,11 +85,35 @@ SELECT DISTINCT
 	,CitizenshipStatus.CodeValue					[CitizenshipStatusCode]
 	,CitizenshipStatus.Description					[CitizenshipStatusDescription]
 --	,credentials not collected
-	,ElectronicMailAddress
-	,ElectronicMailType.CodeValue					[ElectronicMailTypeCode]
-	,ElectronicMailType.Description					[ElectronicMailTypeDescription]
-	,SEM.DoNotPublishIndicator
-	,SEM.PrimaryEmailAddressIndicator
+
+	/* 003 Begin block */ 
+	--,ElectronicMailAddress
+	--,ElectronicMailType.CodeValue					[ElectronicMailTypeCode]
+	--,ElectronicMailType.Description				[ElectronicMailTypeDescription]
+	,STUFF(
+				(
+					SELECT	DISTINCT ', ' + ElectronicMailAddress
+					FROM	edfi.StaffElectronicMail SEM2
+					WHERE	SEM2.StaffUSI = S.StaffUSI
+					FOR	XML PATH ('')
+				)
+				, 1, 1, ''
+		  ) AS 'ElectronicMailAddress'
+	,STUFF(
+				(
+					SELECT	DISTINCT ', ' + EmailType.CodeValue
+					FROM	edfi.StaffElectronicMail SEM3
+						JOIN edfi.Descriptor EmailType
+							ON EmailType.DescriptorId = SEM3.ElectronicMailTypeDescriptorId
+					WHERE	SEM3.StaffUSI = S.StaffUSI
+					FOR	XML PATH ('')
+				)
+				, 1, 1, ''
+		  ) AS 'ElectronicMailTypeCode'
+--	,SEM.DoNotPublishIndicator
+--	,SEM.PrimaryEmailAddressIndicator
+	/* 003 End block */ 
+
 	,GenerationCodeSuffix
 	,HighestCompletedLevelOfEducation.CodeValue		[HighestCompletedLevelOfEducationCode]
 	,HighestCompletedLevelOfEducation.Description	[HighestCompletedLevelOfEducationDescription]
@@ -120,7 +149,6 @@ SELECT DISTINCT
 	,Visa.Description								[VisaDescription]
 	,YearsOfPriorProfessionalExperience
 	,YearsOfPriorTeachingExperience
-
 
 	--table CreateDate/LastModifiedDate
 	,S.CreateDate										
@@ -208,4 +236,7 @@ FROM
 		ON VDL.EducationOrganizationId_School = SEOEA.EducationOrganizationId
 WHERE
 	-- we only want to include codes that are SSN's or NULL values
-	ISNULL(StaffIdentificationSystem.CodeValue, 'SSN') = 'SSN'
+	(StaffIdentificationSystem.CodeValue = 'SSN' OR StaffIdentificationSystem.CodeValue IS NULL)
+GO
+
+

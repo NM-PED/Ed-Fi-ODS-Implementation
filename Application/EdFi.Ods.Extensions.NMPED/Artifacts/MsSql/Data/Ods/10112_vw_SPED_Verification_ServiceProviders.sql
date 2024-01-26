@@ -115,9 +115,9 @@ SELECT DISTINCT
 	,GSPA.Id AS [GeneralStudentProgramAssociationId]
 	
 	--serviceProvider subcollection
-	,STRING_AGG(SSEPASP.PrimaryProvider, ',') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC) AS [PrimaryProvider]
-	,STRING_AGG(ISNULL(Staff.StaffUniqueId,'None'), ',') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC) 	AS	[SpecialEducationStaffUniqueId]
-	,STRING_AGG(Staff.StaffUSI, ',') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC)  AS [StaffUSI] 
+	,STRING_AGG(SSEPASP.PrimaryProvider, ';') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC) AS [PrimaryProvider]
+	,STRING_AGG(ISNULL(Staff.StaffUniqueId,'None'), ';') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC) 	AS	[SpecialEducationStaffUniqueId]
+	,STRING_AGG(Staff.StaffUSI, ';') WITHIN GROUP (ORDER BY SSEPASP.PrimaryProvider DESC)  AS [StaffUSI] 
 --	--end
 
 

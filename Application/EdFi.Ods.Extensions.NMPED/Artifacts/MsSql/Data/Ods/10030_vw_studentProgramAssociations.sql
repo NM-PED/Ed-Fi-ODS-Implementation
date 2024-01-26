@@ -28,6 +28,12 @@
  * Email: Cody.Misplay@ped.nm.gov
  * Date: 10-23-2023
  * Alt Desc: Adjusted the join to StudentSchoolAssociation and added DISTINCT to resolve issues with duplicate records being returned.
+ *
+ * Alt Id: 004 (Increment value each change)
+ * By: Cody Misplay | App Dev III
+ * Email: Cody.Misplay@ped.nm.gov
+ * Date: 01-16-2024
+ * Alt Desc: Changed the join to nmped.StudentProgramAssociationExtension to a left join so other programs which don't use the extension table can be reported.
  */
 
 CREATE OR ALTER   VIEW [nmped_rpt].[vw_studentProgramAssociations] AS 
@@ -108,8 +114,8 @@ FROM
 		ON P.EducationOrganizationId = GSPA.ProgramEducationOrganizationId
 		AND P.ProgramName = GSPA.ProgramName
 		AND P.ProgramTypeDescriptorId = GSPA.ProgramTypeDescriptorId
-
-	JOIN nmped.StudentProgramAssociationExtension SPAE WITH (NOLOCK)
+-- Alt Id: 004 - Below added "LEFT" to the join statement.
+	LEFT JOIN nmped.StudentProgramAssociationExtension SPAE WITH (NOLOCK)
 		ON SPAE.BeginDate = GSPA.BeginDate
 		AND SPAE.EducationOrganizationId = GSPA.EducationOrganizationId
 		AND SPAE.ProgramEducationOrganizationId = GSPA.ProgramEducationOrganizationId
@@ -150,4 +156,5 @@ FROM
 		ON Grade.DescriptorId = SSA.EntryGradeLevelDescriptorId
 
 GO
+
 

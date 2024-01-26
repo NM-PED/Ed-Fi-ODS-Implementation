@@ -58,6 +58,10 @@ SELECT DISTINCT
 	,SSA.PercentageContribution
 	,SSA.TeacherStudentDataLinkExclusion
 
+	-- SessionDates
+	,SESS.BeginDate AS [SessionBeginDate]
+	,SESS.EndDate AS [SessionEndDate]
+
 	-- Course Information
 	,C.CourseCode AS [StateCourseCode]
 	,C.CourseTitle AS [StateCourseTitle]
@@ -73,6 +77,10 @@ SELECT DISTINCT
 	,ID_Cert.IdentificationCode AS [CertNum]
 
 FROM edfi.StaffSectionAssociation SSA WITH (NOLOCK) --65,758 raw
+
+	INNER JOIN edfi.[Session] SESS
+		ON (SESS.SessionName = SSA.SessionName 
+		AND SESS.SchoolId = SSA.SchoolId)
 
 	LEFT JOIN edfi.Staff S WITH (NOLOCK)
 		ON (S.StaffUSI = SSA.StaffUSI)

@@ -26,6 +26,11 @@ SELECT
 	,CO.CourseCode						[StateCourseCode]
 	,S.SchoolId
 	,S.SchoolYear
+
+	-- Session Dates
+	,SESS.BeginDate AS [SessionBeginDate]
+	,SESS.EndDate AS [SessionEndDate]
+
 	,S.SessionName
 	,AvailableCreditConversion
 	,AvailableCredits
@@ -55,6 +60,10 @@ SELECT
 	,S.Id AS [SectionId]
 FROM
 	edfi.Section S WITH (NOLOCK)
+
+	INNER JOIN edfi.[Session] SESS
+		ON (SESS.SessionName = S.SessionName 
+		AND SESS.SchoolId = S.SchoolId)
 
 	JOIN edfi.CourseOffering CO WITH (NOLOCK)
 		ON CO.SchoolId = S.SchoolId

@@ -210,7 +210,7 @@ INSERT INTO edfi.Descriptor ([Namespace], [CodeValue], [ShortDescription],Descri
 
 INSERT INTO nmassessments.ScoringModelCodeDescriptor (ScoringModelCodeDescriptorId) 
 SELECT descriptorId FROM edfi.descriptor
-where namespace = 'uri://nmped.org/nmassessments/ScoringModelCode';
+where namespace = 'uri://nmped.org/nmassessments/ScoringModelCodeDescriptor';
 
 
 

@@ -40,11 +40,16 @@ SELECT
 	,CO.CourseCode AS [StateCourseCode]
 	,SSA.SchoolYear
 	,SectionIdentifier
+
+	-- Session Dates
+	,SESS.BeginDate AS [SessionBeginDate]
+	,SESS.EndDate AS [SessionEndDate]
+
 	,SSA.SessionName
-	,BeginDate
+	,SSA.BeginDate
 	,ClassroomPosition.CodeValue	[ClassroomPositionCode]
 	,ClassroomPosition.Description	[ClassroomPositionDescription]
-	,EndDate
+	,SSA.EndDate
 	,SSA.HighlyQualifiedTeacher
 	,PercentageContribution
 	,TeacherStudentDataLinkExclusion
@@ -55,6 +60,10 @@ SELECT
 	,SSA.Id AS [StaffSectionAssociation_Id]
 FROM
 	edfi.StaffSectionAssociation SSA WITH (NOLOCK)
+
+	INNER JOIN edfi.[Session] SESS
+		ON (SESS.SessionName = SSA.SessionName 
+		AND SESS.SchoolId = SSA.SchoolId)
 
 	JOIN edfi.Staff S WITH (NOLOCK)
 		ON S.StaffUSI = SSA.StaffUSI

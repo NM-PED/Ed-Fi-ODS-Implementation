@@ -24,8 +24,12 @@ SELECT
 	--resource documentation starts
 	,LocalCourseCode
 	,CourseCode
-	,SchoolYear
-	,SessionName
+	,CO.SchoolYear
+	,CO.SessionName
+	-- Session Dates
+	,SE.BeginDate AS [SessionBeginDate]
+	,SE.EndDate AS [SessionEndDate]
+
 --	,courseLevelCharacteristics not collected
 --  ,curriculumUseds not collected
 	,InstructionalTimePlanned
@@ -36,6 +40,9 @@ SELECT
 	,CO.Id AS [CourseOfferingId]
 FROM
 	edfi.CourseOffering CO WITH (NOLOCK)
+
+	INNER JOIN edfi.[Session] SE
+		ON SE.SessionName = CO.SessionName
 
 	INNER JOIN nmped_rpt.vw_district_location VDL WITH (NOLOCK)
 		ON VDL.EducationOrganizationId_School = CO.SchoolId
