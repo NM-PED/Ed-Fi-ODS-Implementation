@@ -12,6 +12,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.AnnualReviewDelayReasonDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.AnnualReviewDelayReasonDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_nmped.DataCollectionPeriodDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_nmped.DataCollectionPeriodDescriptor(DataCollectionPeriodDescriptorId, Id, ChangeVersion)
+    SELECT OLD.DataCollectionPeriodDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.DataCollectionPeriodDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.DataCollectionPeriodDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.DataCollectionPeriodDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_nmped.DentalExaminationVerificationCodeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -122,6 +136,20 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.LocalEducationAgencyTransportation 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.LocalEducationAgencyTransportation_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_nmped.MEPProjectTypeDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_nmped.MEPProjectTypeDescriptor(MEPProjectTypeDescriptorId, Id, ChangeVersion)
+    SELECT OLD.MEPProjectTypeDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.MEPProjectTypeDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.MEPProjectTypeDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.MEPProjectTypeDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_nmped.MileageTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -374,6 +402,19 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.StaffDevelopment 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.StaffDevelopment_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_nmped.StaffEducationOrganizationVacancy_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_nmped.StaffEducationOrganizationVacancy(DataCollectionPeriodDescriptorId, LocalEducationAgencyId, SchoolYear, VacancyGroupDescriptorId, Id, ChangeVersion)
+    VALUES (OLD.DataCollectionPeriodDescriptorId, OLD.LocalEducationAgencyId, OLD.SchoolYear, OLD.VacancyGroupDescriptorId, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.StaffEducationOrganizationVacancy 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.StaffEducationOrganizationVacancy_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_nmped.StudentAwardTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -468,6 +509,20 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.TriennialReviewDelayReasonDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.TriennialReviewDelayReasonDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_nmped.VacancyGroupDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_nmped.VacancyGroupDescriptor(VacancyGroupDescriptorId, Id, ChangeVersion)
+    SELECT OLD.VacancyGroupDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.VacancyGroupDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON nmped.VacancyGroupDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_nmped.VacancyGroupDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_nmped.VehicleBodyManufacturerDescriptor_TR_DelTrkg()
     RETURNS trigger AS

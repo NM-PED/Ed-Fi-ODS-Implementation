@@ -16,6 +16,24 @@ ALTER TABLE [nmped].[AnnualReviewDelayReasonDescriptor] ENABLE TRIGGER [nmped_An
 GO
 
 
+CREATE TRIGGER [nmped].[nmped_DataCollectionPeriodDescriptor_TR_DeleteTracking] ON [nmped].[DataCollectionPeriodDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[DataCollectionPeriodDescriptor](DataCollectionPeriodDescriptorId, Id, ChangeVersion)
+    SELECT  d.DataCollectionPeriodDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.DataCollectionPeriodDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [nmped].[DataCollectionPeriodDescriptor] ENABLE TRIGGER [nmped_DataCollectionPeriodDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [nmped].[nmped_DentalExaminationVerificationCodeDescriptor_TR_DeleteTracking] ON [nmped].[DentalExaminationVerificationCodeDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -156,6 +174,24 @@ END
 GO
 
 ALTER TABLE [nmped].[LocalEducationAgencyTransportation] ENABLE TRIGGER [nmped_LocalEducationAgencyTransportation_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [nmped].[nmped_MEPProjectTypeDescriptor_TR_DeleteTracking] ON [nmped].[MEPProjectTypeDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[MEPProjectTypeDescriptor](MEPProjectTypeDescriptorId, Id, ChangeVersion)
+    SELECT  d.MEPProjectTypeDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.MEPProjectTypeDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [nmped].[MEPProjectTypeDescriptor] ENABLE TRIGGER [nmped_MEPProjectTypeDescriptor_TR_DeleteTracking]
 GO
 
 
@@ -482,6 +518,23 @@ ALTER TABLE [nmped].[StaffDevelopment] ENABLE TRIGGER [nmped_StaffDevelopment_TR
 GO
 
 
+CREATE TRIGGER [nmped].[nmped_StaffEducationOrganizationVacancy_TR_DeleteTracking] ON [nmped].[StaffEducationOrganizationVacancy] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[StaffEducationOrganizationVacancy](DataCollectionPeriodDescriptorId, LocalEducationAgencyId, SchoolYear, VacancyGroupDescriptorId, Id, ChangeVersion)
+    SELECT  DataCollectionPeriodDescriptorId, LocalEducationAgencyId, SchoolYear, VacancyGroupDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [nmped].[StaffEducationOrganizationVacancy] ENABLE TRIGGER [nmped_StaffEducationOrganizationVacancy_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [nmped].[nmped_StudentAwardTypeDescriptor_TR_DeleteTracking] ON [nmped].[StudentAwardTypeDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -602,6 +655,24 @@ END
 GO
 
 ALTER TABLE [nmped].[TriennialReviewDelayReasonDescriptor] ENABLE TRIGGER [nmped_TriennialReviewDelayReasonDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [nmped].[nmped_VacancyGroupDescriptor_TR_DeleteTracking] ON [nmped].[VacancyGroupDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_nmped].[VacancyGroupDescriptor](VacancyGroupDescriptorId, Id, ChangeVersion)
+    SELECT  d.VacancyGroupDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.VacancyGroupDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [nmped].[VacancyGroupDescriptor] ENABLE TRIGGER [nmped_VacancyGroupDescriptor_TR_DeleteTracking]
 GO
 
 

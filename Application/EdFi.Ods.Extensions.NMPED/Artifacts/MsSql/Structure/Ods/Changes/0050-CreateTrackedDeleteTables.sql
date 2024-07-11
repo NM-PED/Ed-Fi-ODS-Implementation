@@ -5,6 +5,13 @@ CREATE TABLE [tracked_deletes_nmped].[AnnualReviewDelayReasonDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_AnnualReviewDelayReasonDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+CREATE TABLE [tracked_deletes_nmped].[DataCollectionPeriodDescriptor]
+(
+       DataCollectionPeriodDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_DataCollectionPeriodDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 CREATE TABLE [tracked_deletes_nmped].[DentalExaminationVerificationCodeDescriptor]
 (
        DentalExaminationVerificationCodeDescriptorId [INT] NOT NULL,
@@ -63,6 +70,13 @@ CREATE TABLE [tracked_deletes_nmped].[LocalEducationAgencyTransportation]
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_LocalEducationAgencyTransportation PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+CREATE TABLE [tracked_deletes_nmped].[MEPProjectTypeDescriptor]
+(
+       MEPProjectTypeDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_MEPProjectTypeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 CREATE TABLE [tracked_deletes_nmped].[MileageTypeDescriptor]
 (
@@ -192,6 +206,16 @@ CREATE TABLE [tracked_deletes_nmped].[StaffDevelopmentPurposeCodeDescriptor]
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_StaffDevelopmentPurposeCodeDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+CREATE TABLE [tracked_deletes_nmped].[StaffEducationOrganizationVacancy]
+(
+       DataCollectionPeriodDescriptorId [INT] NOT NULL,
+       LocalEducationAgencyId [INT] NOT NULL,
+       SchoolYear [SMALLINT] NOT NULL,
+       VacancyGroupDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_StaffEducationOrganizationVacancy PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 CREATE TABLE [tracked_deletes_nmped].[StudentAwardTypeDescriptor]
 (
        StudentAwardTypeDescriptorId [INT] NOT NULL,
@@ -260,6 +284,13 @@ CREATE TABLE [tracked_deletes_nmped].[TriennialReviewDelayReasonDescriptor]
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        CONSTRAINT PK_TriennialReviewDelayReasonDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+CREATE TABLE [tracked_deletes_nmped].[VacancyGroupDescriptor]
+(
+       VacancyGroupDescriptorId [INT] NOT NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_VacancyGroupDescriptor PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 CREATE TABLE [tracked_deletes_nmped].[VehicleBodyManufacturerDescriptor]
 (

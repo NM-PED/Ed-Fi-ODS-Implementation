@@ -82,6 +82,13 @@ VALUES ('staffEducationOrganizationDigitalEquity', 'staffEducationOrganizationDi
         ,@RelationshipBasedDataClaimId, @ApplicationId);
 */
 
+INSERT INTO [dbo].[ResourceClaims] ([DisplayName], [ResourceName] 
+								   ,[ClaimName] 
+								   ,[ParentResourceClaimId], [Application_ApplicationId])
+VALUES ('staffEducationOrganizationVacancy', 'staffEducationOrganizationVacancy'
+        ,'http://ed-fi.org/ods/identity/claims/nmped/staffEducationOrganizationVacancy'
+        ,@RelationshipBasedDataClaimId, @ApplicationId);
+		
 -- *** Descriptors Security -- Adding these under the inherited permissions from System Descriptors ***
 -- *** These inserts should match the MetaEd entries under NMPEDMEtaED.Decriptor ***
 
@@ -120,7 +127,10 @@ INSERT INTO ResourceClaims (DisplayName, ResourceName, ClaimName, ParentResource
 ('vehicleChassisManufacturerDescriptor','vehicleChassisManufacturerDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleChassisManufacturerDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('vehicleFuelTypeDescriptor','vehicleFuelTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleFuelTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
 ('vehicleRouteDescriptor','vehicleRouteDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleRouteDescriptor',@DescriptorsClaimId,@ApplicationId),
-('vehicleTypeDescriptor','vehicleTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleTypeDescriptor',@DescriptorsClaimId,@ApplicationId);
+('vehicleTypeDescriptor','vehicleTypeDescriptor','http://ed-fi.org/ods/identity/claims/nmped/vehicleTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
+('mEPProjectTypeDescriptor', 'mEPProjectTypeDescriptor', 'http://ed-fi.org/ods/identity/claims/nmped/mEPProjectTypeDescriptor',@DescriptorsClaimId,@ApplicationId),
+('dataCollectionPeriodDescriptor', 'dataCollectionPeriodDescriptor', 'http://ed-fi.org/ods/identity/claims/nmped/dataCollectionPeriodDescriptor',@DescriptorsClaimId,@ApplicationId),
+('vacancyGroupDescriptor', 'vacancyGroupDescriptor', 'http://ed-fi.org/ods/identity/claims/nmped/vacancyGroupDescriptor',@DescriptorsClaimId,@ApplicationId);
 
 
 

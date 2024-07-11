@@ -3,6 +3,9 @@
   <Aggregate root="AnnualReviewDelayReasonDescriptor">
     <Entity table="AnnualReviewDelayReasonDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="DataCollectionPeriodDescriptor">
+    <Entity table="DataCollectionPeriodDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="DentalExaminationVerificationCodeDescriptor">
     <Entity table="DentalExaminationVerificationCodeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -26,6 +29,9 @@
   </Aggregate>
   <Aggregate root="LocalEducationAgencyTransportation">
     <Entity table="LocalEducationAgencyTransportation" schema="nmped"/>
+  </Aggregate>
+  <Aggregate root="MEPProjectTypeDescriptor">
+    <Entity table="MEPProjectTypeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
   <Aggregate root="MileageTypeDescriptor">
     <Entity table="MileageTypeDescriptor" isA="Descriptor" schema="nmped"/>
@@ -81,6 +87,9 @@
   <Aggregate root="StaffDevelopmentPurposeCodeDescriptor">
     <Entity table="StaffDevelopmentPurposeCodeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
+  <Aggregate root="StaffEducationOrganizationVacancy">
+    <Entity table="StaffEducationOrganizationVacancy" schema="nmped"/>
+  </Aggregate>
   <Aggregate root="StudentAwardTypeDescriptor">
     <Entity table="StudentAwardTypeDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
@@ -101,6 +110,9 @@
   </Aggregate>
   <Aggregate root="TriennialReviewDelayReasonDescriptor">
     <Entity table="TriennialReviewDelayReasonDescriptor" isA="Descriptor" schema="nmped"/>
+  </Aggregate>
+  <Aggregate root="VacancyGroupDescriptor">
+    <Entity table="VacancyGroupDescriptor" isA="Descriptor" schema="nmped"/>
   </Aggregate>
   <Aggregate root="VehicleBodyManufacturerDescriptor">
     <Entity table="VehicleBodyManufacturerDescriptor" isA="Descriptor" schema="nmped"/>

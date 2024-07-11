@@ -11,6 +11,12 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'nmped.StaffEducationOrganizationVacancy') AND name = N'UX_StaffEducationOrganizationVacancy_ChangeVersion')
+    CREATE INDEX [UX_StaffEducationOrganizationVacancy_ChangeVersion] ON [nmped].[StaffEducationOrganizationVacancy] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'nmped.StudentCTEProgramAssociationCredential') AND name = N'UX_StudentCTEProgramAssociationCredential_ChangeVersion')
     CREATE INDEX [UX_StudentCTEProgramAssociationCredential_ChangeVersion] ON [nmped].[StudentCTEProgramAssociationCredential] ([ChangeVersion] ASC)
     GO

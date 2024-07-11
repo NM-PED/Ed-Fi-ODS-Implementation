@@ -6,6 +6,14 @@ CREATE TABLE tracked_deletes_nmped.AnnualReviewDelayReasonDescriptor
        CONSTRAINT AnnualReviewDelayReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_nmped.DataCollectionPeriodDescriptor
+(
+       DataCollectionPeriodDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT DataCollectionPeriodDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_nmped.DentalExaminationVerificationCodeDescriptor
 (
        DentalExaminationVerificationCodeDescriptorId INT NOT NULL,
@@ -71,6 +79,14 @@ CREATE TABLE tracked_deletes_nmped.LocalEducationAgencyTransportation
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT LocalEducationAgencyTransportation_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_nmped.MEPProjectTypeDescriptor
+(
+       MEPProjectTypeDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT MEPProjectTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_nmped.MileageTypeDescriptor
@@ -219,6 +235,17 @@ CREATE TABLE tracked_deletes_nmped.StaffDevelopmentPurposeCodeDescriptor
        CONSTRAINT StaffDevelopmentPurposeCodeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_nmped.StaffEducationOrganizationVacancy
+(
+       DataCollectionPeriodDescriptorId INT NOT NULL,
+       LocalEducationAgencyId INT NOT NULL,
+       SchoolYear SMALLINT NOT NULL,
+       VacancyGroupDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT StaffEducationOrganizationVacancy_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_nmped.StudentAwardTypeDescriptor
 (
        StudentAwardTypeDescriptorId INT NOT NULL,
@@ -293,6 +320,14 @@ CREATE TABLE tracked_deletes_nmped.TriennialReviewDelayReasonDescriptor
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT TriennialReviewDelayReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_nmped.VacancyGroupDescriptor
+(
+       VacancyGroupDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT VacancyGroupDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_nmped.VehicleBodyManufacturerDescriptor

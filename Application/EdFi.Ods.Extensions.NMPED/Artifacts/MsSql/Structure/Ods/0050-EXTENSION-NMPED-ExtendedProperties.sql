@@ -4,6 +4,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'AnnualReviewDelayReasonDescriptor', @level2type=N'COLUMN', @level2name=N'AnnualReviewDelayReasonDescriptorId'
 GO
 
+-- Extended Properties [nmped].[DataCollectionPeriodDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Collection period of data ie. 40D, 80D, 120D, and EOY.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'DataCollectionPeriodDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'DataCollectionPeriodDescriptor', @level2type=N'COLUMN', @level2name=N'DataCollectionPeriodDescriptorId'
+GO
+
 -- Extended Properties [nmped].[DentalExaminationVerificationCodeDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The code of the dental examination performed.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'DentalExaminationVerificationCodeDescriptor'
 GO
@@ -88,6 +94,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The transportation set code.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyTransportation', @level2type=N'COLUMN', @level2name=N'TransportationSetCodeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The count for the measure.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyTransportation', @level2type=N'COLUMN', @level2name=N'Count'
+GO
+
+-- Extended Properties [nmped].[MEPProjectTypeDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates the type of MEP project based on the location where the MEP services are held', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'MEPProjectTypeDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'MEPProjectTypeDescriptor', @level2type=N'COLUMN', @level2name=N'MEPProjectTypeDescriptorId'
 GO
 
 -- Extended Properties [nmped].[MileageTypeDescriptor] --
@@ -262,6 +274,20 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The data is used to determine if a Staff Member is a National Board Certified Teacher.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationEmploymentAssociationExtension', @level2type=N'COLUMN', @level2name=N'NationalCertified'
 GO
 
+-- Extended Properties [nmped].[StaffEducationOrganizationVacancy] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'District level vacancies by vacancy group.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Collection period of data ie. 40D, 80D, 120D, and EOY.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy', @level2type=N'COLUMN', @level2name=N'DataCollectionPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a local education agency.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy', @level2type=N'COLUMN', @level2name=N'LocalEducationAgencyId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The school year vacancy is reported.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy', @level2type=N'COLUMN', @level2name=N'SchoolYear'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Staff category for which vacancy will be reported.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy', @level2type=N'COLUMN', @level2name=N'VacancyGroupDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Count of vacancies for district level.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationVacancy', @level2type=N'COLUMN', @level2name=N'VacancyCount'
+GO
+
 -- Extended Properties [nmped].[StudentAwardTypeDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The award type.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentAwardTypeDescriptor'
 GO
@@ -302,6 +328,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alpha
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This field holds the date when a student entered the ninth grade.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'Grade09Entry'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The postsecondary plans'' most recent update and signature date.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'PostSecondarySignedPlanDate'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This code for the dental examination performed.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'DentalExaminationVerificationCodeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicator to identify the military stuats of the student''s family', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationExtension', @level2type=N'COLUMN', @level2name=N'MilitaryFamilyDescriptorId'
@@ -340,6 +368,52 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of award.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAward', @level2type=N'COLUMN', @level2name=N'StudentAwardTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAward', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+
+-- Extended Properties [nmped].[StudentMigrantEducationProgramAssociationExtension] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'BeginDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'ProgramEducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'ProgramName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of program.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'ProgramTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Migrant Student Information Exchange system identification number.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'MSIXIdentificationNumber'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The evidence by which a child''s date of birth is confirmed.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'PersonalInformationVerificationDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name of the city that was the child''s last place of residency immediately prior to the qualifying move.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'QualifyingMoveFromCity'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The postal abbreviation code for the State (within the United States) or Outlying Area that was the child''s last place of residency immediately prior to the qualifying move.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'QualifyingMoveFromState'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The abbreviation code for the country (other than the US) that was the child''s last place of residency immediately prior to the qualifying move.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'QualifyingMoveFromCountry'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'QualifyingMoveToCity'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'QualifyingMoveToState'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A child''s immunization record is tied school or MEP enrollment. Users should contact the appropriate facility if a copy of the immunization record is needed.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'ImmunizationRecordFlag'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates the type of MEP project based on the location where the MEP services are held.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'MEPProjectTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Alert indicator for a medical/health condition.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'MedAlertIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates whether the State has determined the child to be priority for services for the duration of the enrollment period (as defined by section 1304(d) of ESSA)', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'PFSIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A comment pertinent to a child''s enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'EnrollmentComment'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates that a State has student transcripts from another State or country than his/her current enrollment.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'OutOfStateTranscriptIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The calendar date on which a child''s residency for one day within the performance period has been confirmed.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'ResidencyVerificationDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Yes indicates the child has received full credit in a mathematics course that is Algebra 1 or its equivalent.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentMigrantEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'Algebra1OrEquivalentIndicator'
 GO
 
 -- Extended Properties [nmped].[StudentProgramAssociationExtension] --
@@ -382,6 +456,20 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Number of days the student received the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) within the reporting period. A one to two digit number.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentProgramAssociationServiceExtension', @level2type=N'COLUMN', @level2name=N'ServiceFrequency'
+GO
+
+-- Extended Properties [nmped].[StudentSchoolAssociationExtension] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which an individual enters and begins to receive instructional services in a school.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'EntryDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Specify if the student has graduated.
+                  1 = Yes graduated
+                  0 = No not graduated', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'GraduationIndicator'
 GO
 
 -- Extended Properties [nmped].[StudentSchoolFoodServiceProgramAssociationExtension] --
@@ -533,6 +621,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The triennial review reason.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'TriennialReviewDelayReasonDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'TriennialReviewDelayReasonDescriptor', @level2type=N'COLUMN', @level2name=N'TriennialReviewDelayReasonDescriptorId'
+GO
+
+-- Extended Properties [nmped].[VacancyGroupDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Staff category for which vacancy will be reported.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'VacancyGroupDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'nmped', @level1type=N'TABLE', @level1name=N'VacancyGroupDescriptor', @level2type=N'COLUMN', @level2name=N'VacancyGroupDescriptorId'
 GO
 
 -- Extended Properties [nmped].[VehicleBodyManufacturerDescriptor] --

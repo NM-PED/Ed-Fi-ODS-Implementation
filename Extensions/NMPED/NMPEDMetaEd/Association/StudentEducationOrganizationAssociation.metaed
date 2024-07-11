@@ -2,6 +2,9 @@ Association EdFi.StudentEducationOrganizationAssociation additions
     date Grade09Entry
         documentation "This field holds the date when a student entered the ninth grade."
         is optional
+    date PostSecondarySignedPlanDate
+        documentation "The postsecondary plans' most recent update and signature date."
+        is optional
     descriptor DentalExaminationVerificationCode
         documentation "This code for the dental examination performed."
         is optional

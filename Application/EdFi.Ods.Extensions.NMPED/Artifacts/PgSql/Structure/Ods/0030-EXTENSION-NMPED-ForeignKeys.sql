@@ -3,6 +3,11 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
+ALTER TABLE nmped.DataCollectionPeriodDescriptor ADD CONSTRAINT FK_881ff2_Descriptor FOREIGN KEY (DataCollectionPeriodDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
 ALTER TABLE nmped.DentalExaminationVerificationCodeDescriptor ADD CONSTRAINT FK_e307f3_Descriptor FOREIGN KEY (DentalExaminationVerificationCodeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -75,6 +80,11 @@ REFERENCES nmped.TransportationSetCodeDescriptor (TransportationSetCodeDescripto
 
 CREATE INDEX FK_a13cc7_TransportationSetCodeDescriptor
 ON nmped.LocalEducationAgencyTransportation (TransportationSetCodeDescriptorId ASC);
+
+ALTER TABLE nmped.MEPProjectTypeDescriptor ADD CONSTRAINT FK_4e7e5a_Descriptor FOREIGN KEY (MEPProjectTypeDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
 
 ALTER TABLE nmped.MileageTypeDescriptor ADD CONSTRAINT FK_3b8662_Descriptor FOREIGN KEY (MileageTypeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
@@ -228,6 +238,34 @@ REFERENCES edfi.StaffEducationOrganizationEmploymentAssociation (EducationOrgani
 ON DELETE CASCADE
 ;
 
+ALTER TABLE nmped.StaffEducationOrganizationVacancy ADD CONSTRAINT FK_ed2336_DataCollectionPeriodDescriptor FOREIGN KEY (DataCollectionPeriodDescriptorId)
+REFERENCES nmped.DataCollectionPeriodDescriptor (DataCollectionPeriodDescriptorId)
+;
+
+CREATE INDEX FK_ed2336_DataCollectionPeriodDescriptor
+ON nmped.StaffEducationOrganizationVacancy (DataCollectionPeriodDescriptorId ASC);
+
+ALTER TABLE nmped.StaffEducationOrganizationVacancy ADD CONSTRAINT FK_ed2336_LocalEducationAgency FOREIGN KEY (LocalEducationAgencyId)
+REFERENCES edfi.LocalEducationAgency (LocalEducationAgencyId)
+;
+
+CREATE INDEX FK_ed2336_LocalEducationAgency
+ON nmped.StaffEducationOrganizationVacancy (LocalEducationAgencyId ASC);
+
+ALTER TABLE nmped.StaffEducationOrganizationVacancy ADD CONSTRAINT FK_ed2336_SchoolYearType FOREIGN KEY (SchoolYear)
+REFERENCES edfi.SchoolYearType (SchoolYear)
+;
+
+CREATE INDEX FK_ed2336_SchoolYearType
+ON nmped.StaffEducationOrganizationVacancy (SchoolYear ASC);
+
+ALTER TABLE nmped.StaffEducationOrganizationVacancy ADD CONSTRAINT FK_ed2336_VacancyGroupDescriptor FOREIGN KEY (VacancyGroupDescriptorId)
+REFERENCES nmped.VacancyGroupDescriptor (VacancyGroupDescriptorId)
+;
+
+CREATE INDEX FK_ed2336_VacancyGroupDescriptor
+ON nmped.StaffEducationOrganizationVacancy (VacancyGroupDescriptorId ASC);
+
 ALTER TABLE nmped.StudentAwardTypeDescriptor ADD CONSTRAINT FK_ead1b6_Descriptor FOREIGN KEY (StudentAwardTypeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -327,6 +365,25 @@ REFERENCES nmped.StudentAwardTypeDescriptor (StudentAwardTypeDescriptorId)
 CREATE INDEX FK_4d41c1_StudentAwardTypeDescriptor
 ON nmped.StudentEducationOrganizationAward (StudentAwardTypeDescriptorId ASC);
 
+ALTER TABLE nmped.StudentMigrantEducationProgramAssociationExtension ADD CONSTRAINT FK_5cb254_MEPProjectTypeDescriptor FOREIGN KEY (MEPProjectTypeDescriptorId)
+REFERENCES nmped.MEPProjectTypeDescriptor (MEPProjectTypeDescriptorId)
+;
+
+CREATE INDEX FK_5cb254_MEPProjectTypeDescriptor
+ON nmped.StudentMigrantEducationProgramAssociationExtension (MEPProjectTypeDescriptorId ASC);
+
+ALTER TABLE nmped.StudentMigrantEducationProgramAssociationExtension ADD CONSTRAINT FK_5cb254_PersonalInformationVerificationDescriptor FOREIGN KEY (PersonalInformationVerificationDescriptorId)
+REFERENCES edfi.PersonalInformationVerificationDescriptor (PersonalInformationVerificationDescriptorId)
+;
+
+CREATE INDEX FK_5cb254_PersonalInformationVerificationDescriptor
+ON nmped.StudentMigrantEducationProgramAssociationExtension (PersonalInformationVerificationDescriptorId ASC);
+
+ALTER TABLE nmped.StudentMigrantEducationProgramAssociationExtension ADD CONSTRAINT FK_5cb254_StudentMigrantEducationProgramAssociation FOREIGN KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
+REFERENCES edfi.StudentMigrantEducationProgramAssociation (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
+ON DELETE CASCADE
+;
+
 ALTER TABLE nmped.StudentProgramAssociationExtension ADD CONSTRAINT FK_0c120d_LanguageDescriptor FOREIGN KEY (BEPProgramLanguageDescriptorId)
 REFERENCES edfi.LanguageDescriptor (LanguageDescriptorId)
 ;
@@ -356,6 +413,12 @@ ON DELETE CASCADE
 ALTER TABLE nmped.StudentProgramAssociationServiceExtension ADD CONSTRAINT FK_beb1a6_StudentProgramAssociationService FOREIGN KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, ServiceDescriptorId, StudentUSI)
 REFERENCES edfi.StudentProgramAssociationService (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, ServiceDescriptorId, StudentUSI)
 ON DELETE CASCADE
+;
+
+ALTER TABLE nmped.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_StudentSchoolAssociation FOREIGN KEY (EntryDate, SchoolId, StudentUSI)
+REFERENCES edfi.StudentSchoolAssociation (EntryDate, SchoolId, StudentUSI)
+ON DELETE CASCADE
+ON UPDATE CASCADE
 ;
 
 ALTER TABLE nmped.StudentSchoolFoodServiceProgramAssociationExtension ADD CONSTRAINT FK_0566bb_DirectCertificationStatusDescriptor FOREIGN KEY (DirectCertificationStatusDescriptorId)
@@ -488,6 +551,11 @@ ON DELETE CASCADE
 ;
 
 ALTER TABLE nmped.TriennialReviewDelayReasonDescriptor ADD CONSTRAINT FK_ec98b9_Descriptor FOREIGN KEY (TriennialReviewDelayReasonDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE nmped.VacancyGroupDescriptor ADD CONSTRAINT FK_d5b190_Descriptor FOREIGN KEY (VacancyGroupDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;

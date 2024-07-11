@@ -213,6 +213,51 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-StaffEducationOrganizationVacancy">
+    <xs:annotation>
+      <xs:documentation>District level vacancies by vacancy group.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="LocalEducationAgencyReference" type="LocalEducationAgencyReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the LocalEducationAgency.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SchoolYear" type="SchoolYearType">
+            <xs:annotation>
+              <xs:documentation>The school year vacancy is reported.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DataCollectionPeriod" type="EXTENSION-DataCollectionPeriodDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>Collection period of data ie. 40D, 80D, 120D, and EOY.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-DataCollectionPeriodDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="VacancyGroup" type="EXTENSION-VacancyGroupDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>Staff category for which vacancy will be reported.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-VacancyGroupDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="VacancyCount" type="xs:int">
+            <xs:annotation>
+              <xs:documentation>Count of vacancies for district level.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-StudentCTEProgramAssociationCredential">
     <xs:annotation>
       <xs:documentation>Credentials earned by students in a CTE program.</xs:documentation>
@@ -542,6 +587,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-DataCollectionPeriodDescriptor">
+    <xs:annotation>
+      <xs:documentation>Collection period of data ie. 40D, 80D, 120D, and EOY.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-DentalExaminationVerificationCodeDescriptor">
     <xs:annotation>
       <xs:documentation>The code of the dental examination performed.</xs:documentation>
@@ -611,6 +667,17 @@
   <xs:complexType name="EXTENSION-LevelOfIntegrationDescriptor">
     <xs:annotation>
       <xs:documentation>This descriptor describes the type of Levels of Integration for Gifted and Special Education Students.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-MEPProjectTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>Indicates the type of MEP project based on the location where the MEP services are held</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -850,6 +917,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-VacancyGroupDescriptor">
+    <xs:annotation>
+      <xs:documentation>Staff category for which vacancy will be reported.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-VehicleBodyManufacturerDescriptor">
     <xs:annotation>
       <xs:documentation>The body manufacturer.</xs:documentation>
@@ -966,6 +1044,11 @@
           <xs:element name="Grade09Entry" type="xs:date" minOccurs="0">
             <xs:annotation>
               <xs:documentation>This field holds the date when a student entered the ninth grade.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PostSecondarySignedPlanDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The postsecondary plans' most recent update and signature date.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="DentalExaminationVerificationCode" type="EXTENSION-DentalExaminationVerificationCodeDescriptorReferenceType" minOccurs="0">
@@ -1193,6 +1276,101 @@
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentMigrantEducationProgramAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentMigrantEducationProgramAssociation">
+        <xs:sequence>
+          <xs:element name="MSIXIdentificationNumber" type="EXTENSION-MSIXIdentificationNumber" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Migrant Student Information Exchange system identification number.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PersonalInformationVerification" type="PersonalInformationVerificationDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The evidence by which a child's date of birth is confirmed.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>PersonalInformationVerificationDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifyingMoveFromCity" type="EXTENSION-QualifyingMoveFromCity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The name of the city that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifyingMoveFromState" type="EXTENSION-QualifyingMoveFromState">
+            <xs:annotation>
+              <xs:documentation>The postal abbreviation code for the State (within the United States) or Outlying Area that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifyingMoveFromCountry" type="EXTENSION-QualifyingMoveFromCountry">
+            <xs:annotation>
+              <xs:documentation>The abbreviation code for the country (other than the US) that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifyingMoveToCity" type="EXTENSION-QualifyingMoveToCity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifyingMoveToState" type="EXTENSION-QualifyingMoveToState" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ImmunizationRecordFlag" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A child's immunization record is tied school or MEP enrollment. Users should contact the appropriate facility if a copy of the immunization record is needed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MEPProjectType" type="EXTENSION-MEPProjectTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates the type of MEP project based on the location where the MEP services are held.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-MEPProjectTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MedAlertIndicator" type="EXTENSION-MedAlertIndicator" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Alert indicator for a medical/health condition.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PFSIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates whether the State has determined the child to be priority for services for the duration of the enrollment period (as defined by section 1304(d) of ESSA)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EnrollmentComment" type="EXTENSION-EnrollmentComment" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A comment pertinent to a child's enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="OutOfStateTranscriptIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates that a State has student transcripts from another State or country than his/her current enrollment.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ResidencyVerificationDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The calendar date on which a child's residency for one day within the performance period has been confirmed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Algebra1OrEquivalentIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Yes indicates the child has received full credit in a mathematics course that is Algebra 1 or its equivalent.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-StudentProgramAssociationExtension">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -1293,6 +1471,27 @@
           </xs:element>
         </xs:sequence>
       </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentSchoolAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentSchoolAssociation">
+        <xs:sequence>
+          <xs:element name="GraduationIndicator" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>Specify if the student has graduated.
+                                1 = Yes graduated
+                                0 = No not graduated</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="EXTENSION-StudentSchoolFoodServiceProgramAssociationExtension">
@@ -1677,6 +1876,61 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-StaffEducationOrganizationVacancyIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StaffEducationOrganizationVacancy.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LocalEducationAgencyReference" type="LocalEducationAgencyReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the LocalEducationAgency.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SchoolYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:documentation>The school year vacancy is reported.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DataCollectionPeriod" type="EXTENSION-DataCollectionPeriodDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>Collection period of data ie. 40D, 80D, 120D, and EOY.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-DataCollectionPeriodDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VacancyGroup" type="EXTENSION-VacancyGroupDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>Staff category for which vacancy will be reported.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-VacancyGroupDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StaffEducationOrganizationVacancyReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StaffEducationOrganizationVacancy. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StaffEducationOrganizationVacancyIdentity" type="EXTENSION-StaffEducationOrganizationVacancyIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StaffEducationOrganizationVacancy.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-StudentCTEProgramAssociationCredentialIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a StudentCTEProgramAssociationCredential.</xs:documentation>
@@ -1976,6 +2230,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-DataCollectionPeriodDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Collection period of data ie. 40D, 80D, 120D, and EOY.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-DentalExaminationVerificationCodeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The code of the dental examination performed.</xs:documentation>
@@ -2033,6 +2296,15 @@
   <xs:simpleType name="EXTENSION-LevelOfIntegrationDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>This descriptor describes the type of Levels of Integration for Gifted and Special Education Students.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MEPProjectTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Indicates the type of MEP project based on the location where the MEP services are held</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -2228,6 +2500,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-VacancyGroupDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Staff category for which vacancy will be reported.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-VehicleBodyManufacturerDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The body manufacturer.</xs:documentation>
@@ -2374,6 +2655,17 @@
       <xs:maxLength value="1024" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EnrollmentComment">
+    <xs:annotation>
+      <xs:documentation>A comment pertinent to a child's enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-LicensePlateNumber">
     <xs:annotation>
       <xs:documentation>The vehicle's license number.</xs:documentation>
@@ -2383,6 +2675,83 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MedAlertIndicator">
+    <xs:annotation>
+      <xs:documentation>Alert indicator for a medical/health condition.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MSIXIdentificationNumber">
+    <xs:annotation>
+      <xs:documentation>Migrant Student Information Exchange system identification number.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifyingMoveFromCity">
+    <xs:annotation>
+      <xs:documentation>The name of the city that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="300" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifyingMoveFromCountry">
+    <xs:annotation>
+      <xs:documentation>The abbreviation code for the country (other than the US) that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="300" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifyingMoveFromState">
+    <xs:annotation>
+      <xs:documentation>The postal abbreviation code for the State (within the United States) or Outlying Area that was the child's last place of residency immediately prior to the qualifying move.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="300" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifyingMoveToCity">
+    <xs:annotation>
+      <xs:documentation>The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="300" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifyingMoveToState">
+    <xs:annotation>
+      <xs:documentation>The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="300" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-RegisteredOwnerCode">

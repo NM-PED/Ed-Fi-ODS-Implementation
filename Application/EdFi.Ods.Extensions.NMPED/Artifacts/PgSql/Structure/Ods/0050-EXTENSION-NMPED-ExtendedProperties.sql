@@ -2,6 +2,10 @@
 COMMENT ON TABLE nmped.AnnualReviewDelayReasonDescriptor IS 'The annual review delay reason.';
 COMMENT ON COLUMN nmped.AnnualReviewDelayReasonDescriptor.AnnualReviewDelayReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [nmped].[DataCollectionPeriodDescriptor] --
+COMMENT ON TABLE nmped.DataCollectionPeriodDescriptor IS 'Collection period of data ie. 40D, 80D, 120D, and EOY.';
+COMMENT ON COLUMN nmped.DataCollectionPeriodDescriptor.DataCollectionPeriodDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [nmped].[DentalExaminationVerificationCodeDescriptor] --
 COMMENT ON TABLE nmped.DentalExaminationVerificationCodeDescriptor IS 'The code of the dental examination performed.';
 COMMENT ON COLUMN nmped.DentalExaminationVerificationCodeDescriptor.DentalExaminationVerificationCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -54,6 +58,10 @@ COMMENT ON COLUMN nmped.LocalEducationAgencyTransportation.CategoryDescriptor02T
 COMMENT ON COLUMN nmped.LocalEducationAgencyTransportation.LocalEducationAgencyId IS 'The identifier assigned to a local education agency.';
 COMMENT ON COLUMN nmped.LocalEducationAgencyTransportation.TransportationSetCodeDescriptorId IS 'The transportation set code.';
 COMMENT ON COLUMN nmped.LocalEducationAgencyTransportation.Count IS 'The count for the measure.';
+
+-- Extended Properties [nmped].[MEPProjectTypeDescriptor] --
+COMMENT ON TABLE nmped.MEPProjectTypeDescriptor IS 'Indicates the type of MEP project based on the location where the MEP services are held';
+COMMENT ON COLUMN nmped.MEPProjectTypeDescriptor.MEPProjectTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [nmped].[MileageTypeDescriptor] --
 COMMENT ON TABLE nmped.MileageTypeDescriptor IS 'The mileage type.';
@@ -164,6 +172,14 @@ COMMENT ON COLUMN nmped.StaffEducationOrganizationEmploymentAssociationExtension
 COMMENT ON COLUMN nmped.StaffEducationOrganizationEmploymentAssociationExtension.BaccalaureateLevelOfEducationInstitutionDescriptorId IS 'Indicates the Institution or State that conferred Baccalaureate Degree.';
 COMMENT ON COLUMN nmped.StaffEducationOrganizationEmploymentAssociationExtension.NationalCertified IS 'The data is used to determine if a Staff Member is a National Board Certified Teacher.';
 
+-- Extended Properties [nmped].[StaffEducationOrganizationVacancy] --
+COMMENT ON TABLE nmped.StaffEducationOrganizationVacancy IS 'District level vacancies by vacancy group.';
+COMMENT ON COLUMN nmped.StaffEducationOrganizationVacancy.DataCollectionPeriodDescriptorId IS 'Collection period of data ie. 40D, 80D, 120D, and EOY.';
+COMMENT ON COLUMN nmped.StaffEducationOrganizationVacancy.LocalEducationAgencyId IS 'The identifier assigned to a local education agency.';
+COMMENT ON COLUMN nmped.StaffEducationOrganizationVacancy.SchoolYear IS 'The school year vacancy is reported.';
+COMMENT ON COLUMN nmped.StaffEducationOrganizationVacancy.VacancyGroupDescriptorId IS 'Staff category for which vacancy will be reported.';
+COMMENT ON COLUMN nmped.StaffEducationOrganizationVacancy.VacancyCount IS 'Count of vacancies for district level.';
+
 -- Extended Properties [nmped].[StudentAwardTypeDescriptor] --
 COMMENT ON TABLE nmped.StudentAwardTypeDescriptor IS 'The award type.';
 COMMENT ON COLUMN nmped.StudentAwardTypeDescriptor.StudentAwardTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -188,6 +204,7 @@ COMMENT ON TABLE nmped.StudentEducationOrganizationAssociationExtension IS '';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.Grade09Entry IS 'This field holds the date when a student entered the ninth grade.';
+COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.PostSecondarySignedPlanDate IS 'The postsecondary plans'' most recent update and signature date.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.DentalExaminationVerificationCodeDescriptorId IS 'This code for the dental examination performed.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.MilitaryFamilyDescriptorId IS 'Indicator to identify the military stuats of the student''s family';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAssociationExtension.GenderIdentityDescriptorId IS 'Indicates the gender the student identifies with.';
@@ -213,6 +230,30 @@ COMMENT ON COLUMN nmped.StudentEducationOrganizationAward.StudentAwardLanguageDe
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAward.StudentAwardTypeDescriptorId IS 'The type of award.';
 COMMENT ON COLUMN nmped.StudentEducationOrganizationAward.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 
+-- Extended Properties [nmped].[StudentMigrantEducationProgramAssociationExtension] --
+COMMENT ON TABLE nmped.StudentMigrantEducationProgramAssociationExtension IS '';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.ProgramEducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.ProgramName IS 'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.ProgramTypeDescriptorId IS 'The type of program.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.MSIXIdentificationNumber IS 'Migrant Student Information Exchange system identification number.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.PersonalInformationVerificationDescriptorId IS 'The evidence by which a child''s date of birth is confirmed.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.QualifyingMoveFromCity IS 'The name of the city that was the child''s last place of residency immediately prior to the qualifying move.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.QualifyingMoveFromState IS 'The postal abbreviation code for the State (within the United States) or Outlying Area that was the child''s last place of residency immediately prior to the qualifying move.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.QualifyingMoveFromCountry IS 'The abbreviation code for the country (other than the US) that was the child''s last place of residency immediately prior to the qualifying move.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.QualifyingMoveToCity IS 'The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.QualifyingMoveToState IS 'The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.ImmunizationRecordFlag IS 'A child''s immunization record is tied school or MEP enrollment. Users should contact the appropriate facility if a copy of the immunization record is needed.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.MEPProjectTypeDescriptorId IS 'Indicates the type of MEP project based on the location where the MEP services are held.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.MedAlertIndicator IS 'Alert indicator for a medical/health condition.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.PFSIndicator IS 'Indicates whether the State has determined the child to be priority for services for the duration of the enrollment period (as defined by section 1304(d) of ESSA)';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.EnrollmentComment IS 'A comment pertinent to a child''s enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.OutOfStateTranscriptIndicator IS 'Indicates that a State has student transcripts from another State or country than his/her current enrollment.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.ResidencyVerificationDate IS 'The calendar date on which a child''s residency for one day within the performance period has been confirmed.';
+COMMENT ON COLUMN nmped.StudentMigrantEducationProgramAssociationExtension.Algebra1OrEquivalentIndicator IS 'Yes indicates the child has received full credit in a mathematics course that is Algebra 1 or its equivalent.';
+
 -- Extended Properties [nmped].[StudentProgramAssociationExtension] --
 COMMENT ON TABLE nmped.StudentProgramAssociationExtension IS '';
 COMMENT ON COLUMN nmped.StudentProgramAssociationExtension.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
@@ -235,6 +276,15 @@ COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ProgramTypeDes
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceDescriptorId IS 'Indicates the Service being provided to the student by the Program.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN nmped.StudentProgramAssociationServiceExtension.ServiceFrequency IS 'Number of days the student received the Community School Program (CSP) and/or Expanded and Enriched Learning Time and Opportunities (EELTO) within the reporting period. A one to two digit number.';
+
+-- Extended Properties [nmped].[StudentSchoolAssociationExtension] --
+COMMENT ON TABLE nmped.StudentSchoolAssociationExtension IS '';
+COMMENT ON COLUMN nmped.StudentSchoolAssociationExtension.EntryDate IS 'The month, day, and year on which an individual enters and begins to receive instructional services in a school.';
+COMMENT ON COLUMN nmped.StudentSchoolAssociationExtension.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN nmped.StudentSchoolAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN nmped.StudentSchoolAssociationExtension.GraduationIndicator IS 'Specify if the student has graduated.
+                  1 = Yes graduated
+                  0 = No not graduated';
 
 -- Extended Properties [nmped].[StudentSchoolFoodServiceProgramAssociationExtension] --
 COMMENT ON TABLE nmped.StudentSchoolFoodServiceProgramAssociationExtension IS '';
@@ -324,6 +374,10 @@ COMMENT ON COLUMN nmped.TransportationSetCodeDescriptor.TransportationSetCodeDes
 -- Extended Properties [nmped].[TriennialReviewDelayReasonDescriptor] --
 COMMENT ON TABLE nmped.TriennialReviewDelayReasonDescriptor IS 'The triennial review reason.';
 COMMENT ON COLUMN nmped.TriennialReviewDelayReasonDescriptor.TriennialReviewDelayReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [nmped].[VacancyGroupDescriptor] --
+COMMENT ON TABLE nmped.VacancyGroupDescriptor IS 'Staff category for which vacancy will be reported.';
+COMMENT ON COLUMN nmped.VacancyGroupDescriptor.VacancyGroupDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [nmped].[VehicleBodyManufacturerDescriptor] --
 COMMENT ON TABLE nmped.VehicleBodyManufacturerDescriptor IS 'The body manufacturer.';

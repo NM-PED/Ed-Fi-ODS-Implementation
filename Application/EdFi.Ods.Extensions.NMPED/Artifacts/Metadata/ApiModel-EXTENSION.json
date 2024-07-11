@@ -22,6 +22,18 @@
     {
       "aggregateRootEntityName": {
         "schema": "nmped",
+        "name": "DataCollectionPeriodDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "nmped",
+          "name": "DataCollectionPeriodDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "nmped",
         "name": "DentalExaminationVerificationCodeDescriptor"
       },
       "aggregateEntityNames": [
@@ -112,6 +124,18 @@
         {
           "schema": "nmped",
           "name": "LocalEducationAgencyTransportation"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "nmped",
+        "name": "MEPProjectTypeDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "nmped",
+          "name": "MEPProjectTypeDescriptor"
         }
       ]
     },
@@ -334,6 +358,18 @@
     {
       "aggregateRootEntityName": {
         "schema": "nmped",
+        "name": "StaffEducationOrganizationVacancy"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "nmped",
+          "name": "StaffEducationOrganizationVacancy"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "nmped",
         "name": "StudentAwardTypeDescriptor"
       },
       "aggregateEntityNames": [
@@ -412,6 +448,18 @@
         {
           "schema": "nmped",
           "name": "TriennialReviewDelayReasonDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "nmped",
+        "name": "VacancyGroupDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "nmped",
+          "name": "VacancyGroupDescriptor"
         }
       ]
     },
@@ -525,6 +573,31 @@
       "tableNames": {
         "sqlServer": "AnnualReviewDelayReasonDescriptor",
         "postgreSql": "AnnualReviewDelayReasonDescriptor"
+      }
+    },
+    {
+      "schema": "nmped",
+      "name": "DataCollectionPeriodDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "DataCollectionPeriodDescriptor_PK",
+          "identifyingPropertyNames": [
+            "DataCollectionPeriodDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "DataCollectionPeriodDescriptor_PK",
+            "postgreSql": "DataCollectionPeriodDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Collection period of data ie. 40D, 80D, 120D, and EOY.",
+      "tableNames": {
+        "sqlServer": "DataCollectionPeriodDescriptor",
+        "postgreSql": "DataCollectionPeriodDescriptor"
       }
     },
     {
@@ -1000,6 +1073,31 @@
       "tableNames": {
         "sqlServer": "LocalEducationAgencyTransportation",
         "postgreSql": "LocalEducationAgencyTransportation"
+      }
+    },
+    {
+      "schema": "nmped",
+      "name": "MEPProjectTypeDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "MEPProjectTypeDescriptor_PK",
+          "identifyingPropertyNames": [
+            "MEPProjectTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "MEPProjectTypeDescriptor_PK",
+            "postgreSql": "MEPProjectTypeDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Indicates the type of MEP project based on the location where the MEP services are held",
+      "tableNames": {
+        "sqlServer": "MEPProjectTypeDescriptor",
+        "postgreSql": "MEPProjectTypeDescriptor"
       }
     },
     {
@@ -1766,6 +1864,115 @@
     },
     {
       "schema": "nmped",
+      "name": "StaffEducationOrganizationVacancy",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "Id",
+          "propertyType": {
+            "dbType": "Guid",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Id",
+            "postgreSql": "Id"
+          }
+        },
+        {
+          "propertyName": "LastModifiedDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LastModifiedDate",
+            "postgreSql": "LastModifiedDate"
+          }
+        },
+        {
+          "propertyName": "VacancyCount",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "Count of vacancies for district level.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "VacancyCount",
+            "postgreSql": "VacancyCount"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "StaffEducationOrganizationVacancy_PK",
+          "identifyingPropertyNames": [
+            "DataCollectionPeriodDescriptorId",
+            "LocalEducationAgencyId",
+            "SchoolYear",
+            "VacancyGroupDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "StaffEducationOrganizationVacancy_PK",
+            "postgreSql": "StaffEducationOrganizationVacancy_PK"
+          }
+        },
+        {
+          "identifierName": "UX_StaffEducationOrganizationVacancy_Id",
+          "identifyingPropertyNames": [
+            "Id"
+          ],
+          "isPrimary": false,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "UX_StaffEducationOrganizationVacancy_Id",
+            "postgreSql": "UX_ed2336_Id"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "District level vacancies by vacancy group.",
+      "tableNames": {
+        "sqlServer": "StaffEducationOrganizationVacancy",
+        "postgreSql": "StaffEducationOrganizationVacancy"
+      }
+    },
+    {
+      "schema": "nmped",
       "name": "StudentAwardTypeDescriptor",
       "locallyDefinedProperties": [],
       "identifiers": [
@@ -1939,6 +2146,23 @@
           "columnNames": {
             "sqlServer": "Grade09Entry",
             "postgreSql": "Grade09Entry"
+          }
+        },
+        {
+          "propertyName": "PostSecondarySignedPlanDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The postsecondary plans' most recent update and signature date.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PostSecondarySignedPlanDate",
+            "postgreSql": "PostSecondarySignedPlanDate"
           }
         }
       ],
@@ -2122,6 +2346,275 @@
     },
     {
       "schema": "nmped",
+      "name": "StudentMigrantEducationProgramAssociationExtension",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "Algebra1OrEquivalentIndicator",
+          "propertyType": {
+            "dbType": "Boolean",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Yes indicates the child has received full credit in a mathematics course that is Algebra 1 or its equivalent.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Algebra1OrEquivalentIndicator",
+            "postgreSql": "Algebra1OrEquivalentIndicator"
+          }
+        },
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "EnrollmentComment",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 1000,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "A comment pertinent to a child's enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EnrollmentComment",
+            "postgreSql": "EnrollmentComment"
+          }
+        },
+        {
+          "propertyName": "ImmunizationRecordFlag",
+          "propertyType": {
+            "dbType": "Boolean",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "A child's immunization record is tied school or MEP enrollment. Users should contact the appropriate facility if a copy of the immunization record is needed.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ImmunizationRecordFlag",
+            "postgreSql": "ImmunizationRecordFlag"
+          }
+        },
+        {
+          "propertyName": "MedAlertIndicator",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 100,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Alert indicator for a medical/health condition.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "MedAlertIndicator",
+            "postgreSql": "MedAlertIndicator"
+          }
+        },
+        {
+          "propertyName": "MSIXIdentificationNumber",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 20,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Migrant Student Information Exchange system identification number.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "MSIXIdentificationNumber",
+            "postgreSql": "MSIXIdentificationNumber"
+          }
+        },
+        {
+          "propertyName": "OutOfStateTranscriptIndicator",
+          "propertyType": {
+            "dbType": "Boolean",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Indicates that a State has student transcripts from another State or country than his/her current enrollment.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "OutOfStateTranscriptIndicator",
+            "postgreSql": "OutOfStateTranscriptIndicator"
+          }
+        },
+        {
+          "propertyName": "PFSIndicator",
+          "propertyType": {
+            "dbType": "Boolean",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Indicates whether the State has determined the child to be priority for services for the duration of the enrollment period (as defined by section 1304(d) of ESSA)",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PFSIndicator",
+            "postgreSql": "PFSIndicator"
+          }
+        },
+        {
+          "propertyName": "QualifyingMoveFromCity",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 300,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The name of the city that was the child's last place of residency immediately prior to the qualifying move.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "QualifyingMoveFromCity",
+            "postgreSql": "QualifyingMoveFromCity"
+          }
+        },
+        {
+          "propertyName": "QualifyingMoveFromCountry",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 300,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The abbreviation code for the country (other than the US) that was the child's last place of residency immediately prior to the qualifying move.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "QualifyingMoveFromCountry",
+            "postgreSql": "QualifyingMoveFromCountry"
+          }
+        },
+        {
+          "propertyName": "QualifyingMoveFromState",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 300,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The postal abbreviation code for the State (within the United States) or Outlying Area that was the child's last place of residency immediately prior to the qualifying move.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "QualifyingMoveFromState",
+            "postgreSql": "QualifyingMoveFromState"
+          }
+        },
+        {
+          "propertyName": "QualifyingMoveToCity",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 300,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "QualifyingMoveToCity",
+            "postgreSql": "QualifyingMoveToCity"
+          }
+        },
+        {
+          "propertyName": "QualifyingMoveToState",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 300,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "QualifyingMoveToState",
+            "postgreSql": "QualifyingMoveToState"
+          }
+        },
+        {
+          "propertyName": "ResidencyVerificationDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The calendar date on which a child's residency for one day within the performance period has been confirmed.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ResidencyVerificationDate",
+            "postgreSql": "ResidencyVerificationDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "StudentMigrantEducationProgramAssociationExtension_PK",
+          "identifyingPropertyNames": [
+            "BeginDate",
+            "EducationOrganizationId",
+            "ProgramEducationOrganizationId",
+            "ProgramName",
+            "ProgramTypeDescriptorId",
+            "StudentUSI"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "StudentMigrantEducationProgramAssociationExtension_PK",
+            "postgreSql": "StudentMigrantEducationProgramAssociationExtension_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "",
+      "tableNames": {
+        "sqlServer": "StudentMigrantEducationProgramAssociationExtension",
+        "postgreSql": "StudentMigrantEducationProgramAssociationExtension"
+      }
+    },
+    {
+      "schema": "nmped",
       "name": "StudentProgramAssociationExtension",
       "locallyDefinedProperties": [
         {
@@ -2232,6 +2725,68 @@
       "tableNames": {
         "sqlServer": "StudentProgramAssociationServiceExtension",
         "postgreSql": "StudentProgramAssociationServiceExtension"
+      }
+    },
+    {
+      "schema": "nmped",
+      "name": "StudentSchoolAssociationExtension",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "GraduationIndicator",
+          "propertyType": {
+            "dbType": "Boolean",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "Specify if the student has graduated.                  1 = Yes graduated                  0 = No not graduated",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "GraduationIndicator",
+            "postgreSql": "GraduationIndicator"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "StudentSchoolAssociationExtension_PK",
+          "identifyingPropertyNames": [
+            "EntryDate",
+            "SchoolId",
+            "StudentUSI"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "StudentSchoolAssociationExtension_PK",
+            "postgreSql": "StudentSchoolAssociationExtension_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "",
+      "tableNames": {
+        "sqlServer": "StudentSchoolAssociationExtension",
+        "postgreSql": "StudentSchoolAssociationExtension"
       }
     },
     {
@@ -2703,6 +3258,31 @@
     },
     {
       "schema": "nmped",
+      "name": "VacancyGroupDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "VacancyGroupDescriptor_PK",
+          "identifyingPropertyNames": [
+            "VacancyGroupDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "VacancyGroupDescriptor_PK",
+            "postgreSql": "VacancyGroupDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Staff category for which vacancy will be reported.",
+      "tableNames": {
+        "sqlServer": "VacancyGroupDescriptor",
+        "postgreSql": "VacancyGroupDescriptor"
+      }
+    },
+    {
+      "schema": "nmped",
       "name": "VehicleBodyManufacturerDescriptor",
       "locallyDefinedProperties": [],
       "identifiers": [
@@ -2804,7 +3384,8 @@
             "maxLength": 0,
             "precision": 5,
             "scale": 1,
-            "isNullable": false
+            "isNullable": false,
+            "minValue": 0
           },
           "description": "The daily mileage.",
           "isIdentifying": false,
@@ -3326,6 +3907,66 @@
       "constraintNames": {
         "sqlServer": "FK_AnnualReviewDelayReasonDescriptor_Descriptor",
         "postgreSql": "FK_d77238_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_DataCollectionPeriodDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "DataCollectionPeriodDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "DataCollectionPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DataCollectionPeriodDescriptorId",
+            "postgreSql": "DataCollectionPeriodDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_DataCollectionPeriodDescriptor_Descriptor",
+        "postgreSql": "FK_881ff2_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -4206,6 +4847,66 @@
       "constraintNames": {
         "sqlServer": "FK_LocalEducationAgencyTransportation_TransportationSetCodeDescriptor",
         "postgreSql": "FK_a13cc7_TransportationSetCodeDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_MEPProjectTypeDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "MEPProjectTypeDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "MEPProjectTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "MEPProjectTypeDescriptorId",
+            "postgreSql": "MEPProjectTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_MEPProjectTypeDescriptor_Descriptor",
+        "postgreSql": "FK_4e7e5a_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -6068,6 +6769,246 @@
     {
       "fullName": {
         "schema": "nmped",
+        "name": "FK_StaffEducationOrganizationVacancy_DataCollectionPeriodDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "nmped",
+        "name": "DataCollectionPeriodDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DataCollectionPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "DataCollectionPeriodDescriptorId",
+            "postgreSql": "DataCollectionPeriodDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StaffEducationOrganizationVacancy"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "DataCollectionPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "Collection period of data ie. 40D, 80D, 120D, and EOY.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "DataCollectionPeriodDescriptorId",
+            "postgreSql": "DataCollectionPeriodDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StaffEducationOrganizationVacancy_DataCollectionPeriodDescriptor",
+        "postgreSql": "FK_ed2336_DataCollectionPeriodDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StaffEducationOrganizationVacancy_LocalEducationAgency"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "LocalEducationAgency"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "LocalEducationAgencyId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to a local education agency.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LocalEducationAgencyId",
+            "postgreSql": "LocalEducationAgencyId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StaffEducationOrganizationVacancy"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "LocalEducationAgencyId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to a local education agency.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LocalEducationAgencyId",
+            "postgreSql": "LocalEducationAgencyId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StaffEducationOrganizationVacancy_LocalEducationAgency",
+        "postgreSql": "FK_ed2336_LocalEducationAgency"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StaffEducationOrganizationVacancy_SchoolYearType"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "SchoolYearType"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "Key for School Year",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StaffEducationOrganizationVacancy"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The school year vacancy is reported.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StaffEducationOrganizationVacancy_SchoolYearType",
+        "postgreSql": "FK_ed2336_SchoolYearType"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StaffEducationOrganizationVacancy_VacancyGroupDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "nmped",
+        "name": "VacancyGroupDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "VacancyGroupDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "VacancyGroupDescriptorId",
+            "postgreSql": "VacancyGroupDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StaffEducationOrganizationVacancy"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "VacancyGroupDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "Staff category for which vacancy will be reported.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "VacancyGroupDescriptorId",
+            "postgreSql": "VacancyGroupDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StaffEducationOrganizationVacancy_VacancyGroupDescriptor",
+        "postgreSql": "FK_ed2336_VacancyGroupDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
         "name": "FK_StudentAwardTypeDescriptor_Descriptor"
       },
       "cardinality": "OneToOneInheritance",
@@ -7239,6 +8180,355 @@
     {
       "fullName": {
         "schema": "nmped",
+        "name": "FK_StudentMigrantEducationProgramAssociationExtension_MEPProjectTypeDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "nmped",
+        "name": "MEPProjectTypeDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "MEPProjectTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "MEPProjectTypeDescriptorId",
+            "postgreSql": "MEPProjectTypeDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StudentMigrantEducationProgramAssociationExtension"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "MEPProjectTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Indicates the type of MEP project based on the location where the MEP services are held.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "MEPProjectTypeDescriptorId",
+            "postgreSql": "MEPProjectTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_StudentMigrantEducationProgramAssociationExtension_MEPProjectTypeDescriptor",
+        "postgreSql": "FK_5cb254_MEPProjectTypeDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StudentMigrantEducationProgramAssociationExtension_PersonalInformationVerificationDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "PersonalInformationVerificationDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "PersonalInformationVerificationDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonalInformationVerificationDescriptorId",
+            "postgreSql": "PersonalInformationVerificationDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StudentMigrantEducationProgramAssociationExtension"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "PersonalInformationVerificationDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The evidence by which a child's date of birth is confirmed.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonalInformationVerificationDescriptorId",
+            "postgreSql": "PersonalInformationVerificationDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_StudentMigrantEducationProgramAssociationExtension_PersonalInformationVerificationDescriptor",
+        "postgreSql": "FK_5cb254_PersonalInformationVerificationDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StudentMigrantEducationProgramAssociationExtension_StudentMigrantEducationProgramAssociation"
+      },
+      "cardinality": "OneToOneExtension",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "StudentMigrantEducationProgramAssociation"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "BeginDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "BeginDate",
+            "postgreSql": "BeginDate"
+          }
+        },
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "ProgramEducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramEducationOrganizationId",
+            "postgreSql": "ProgramEducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "ProgramName",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 60,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramName",
+            "postgreSql": "ProgramName"
+          }
+        },
+        {
+          "propertyName": "ProgramTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of program.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramTypeDescriptorId",
+            "postgreSql": "ProgramTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StudentMigrantEducationProgramAssociationExtension"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "BeginDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "BeginDate",
+            "postgreSql": "BeginDate"
+          }
+        },
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "ProgramEducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramEducationOrganizationId",
+            "postgreSql": "ProgramEducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "ProgramName",
+          "propertyType": {
+            "dbType": "String",
+            "maxLength": 60,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramName",
+            "postgreSql": "ProgramName"
+          }
+        },
+        {
+          "propertyName": "ProgramTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of program.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ProgramTypeDescriptorId",
+            "postgreSql": "ProgramTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StudentMigrantEducationProgramAssociationExtension_StudentMigrantEducationProgramAssociation",
+        "postgreSql": "FK_5cb254_StudentMigrantEducationProgramAssociation"
+      }
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
         "name": "FK_StudentProgramAssociationExtension_LanguageDescriptor"
       },
       "cardinality": "OneToZeroOrMore",
@@ -7908,6 +9198,133 @@
         "postgreSql": "FK_beb1a6_StudentProgramAssociationService"
       },
       "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_StudentSchoolAssociationExtension_StudentSchoolAssociation"
+      },
+      "cardinality": "OneToOneExtension",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "StudentSchoolAssociation"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EntryDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The month, day, and year on which an individual enters and begins to receive instructional services in a school.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EntryDate",
+            "postgreSql": "EntryDate"
+          }
+        },
+        {
+          "propertyName": "SchoolId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to a school.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolId",
+            "postgreSql": "SchoolId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "StudentSchoolAssociationExtension"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EntryDate",
+          "propertyType": {
+            "dbType": "Date",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The month, day, and year on which an individual enters and begins to receive instructional services in a school.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EntryDate",
+            "postgreSql": "EntryDate"
+          }
+        },
+        {
+          "propertyName": "SchoolId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to a school.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolId",
+            "postgreSql": "SchoolId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StudentSchoolAssociationExtension_StudentSchoolAssociation",
+        "postgreSql": "FK_880cb1_StudentSchoolAssociation"
+      }
     },
     {
       "fullName": {
@@ -10081,6 +11498,66 @@
       "constraintNames": {
         "sqlServer": "FK_TriennialReviewDelayReasonDescriptor_Descriptor",
         "postgreSql": "FK_ec98b9_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "nmped",
+        "name": "FK_VacancyGroupDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "nmped",
+        "name": "VacancyGroupDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "VacancyGroupDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "VacancyGroupDescriptorId",
+            "postgreSql": "VacancyGroupDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_VacancyGroupDescriptor_Descriptor",
+        "postgreSql": "FK_d5b190_Descriptor"
       },
       "potentiallyLogical": false
     },
