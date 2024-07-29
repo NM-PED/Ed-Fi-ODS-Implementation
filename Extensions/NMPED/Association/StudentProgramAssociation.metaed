@@ -1,0 +1,14 @@
+Association EdFi.StudentProgramAssociation additions
+  descriptor ParticipationInformation
+      documentation "Indicates the program participation information."
+      is optional
+    descriptor ProgramIntensity
+        documentation "Indicates the program Intensity."
+        is optional
+    descriptor EdFi.Language
+        documentation "Language for students participating in BEP"
+        is optional
+        role name BEPProgramLanguage
+    common extension EdFi.Service
+        documentation "Extended fields for Service ServiceFrequency"
+        is optional collection

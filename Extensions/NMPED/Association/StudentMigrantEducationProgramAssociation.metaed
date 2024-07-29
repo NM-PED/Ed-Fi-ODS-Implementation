@@ -1,0 +1,54 @@
+Association EdFi.StudentMigrantEducationProgramAssociation additions
+string MSIXIdentificationNumber
+    documentation "Migrant Student Information Exchange system identification number."
+    is optional
+    max length 20
+descriptor EdFi.PersonalInformationVerification
+    documentation "The evidence by which a child's date of birth is confirmed."
+    is optional
+string QualifyingMoveFromCity
+    documentation "The name of the city that was the child's last place of residency immediately prior to the qualifying move."
+    is optional
+    max length 300
+string QualifyingMoveFromState
+    documentation "The postal abbreviation code for the State (within the United States) or Outlying Area that was the child's last place of residency immediately prior to the qualifying move."
+    is required
+    max length 300
+string QualifyingMoveFromCountry
+    documentation "The abbreviation code for the country (other than the US) that was the child's last place of residency immediately prior to the qualifying move."
+    is required
+    max length 300
+string QualifyingMoveToCity
+    documentation "The name of the city in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker."
+    is optional
+    max length 300
+string QualifyingMoveToState
+    documentation "The 2 letter postal abbreviation code for a State (within the United States) or Outlying Area in which the child resided immediately following the qualifying move as the worker, or with or to join, the worker."
+    is optional
+    max length 300
+bool ImmunizationRecordFlag
+    documentation "A child's immunization record is tied school or MEP enrollment. Users should contact the appropriate facility if a copy of the immunization record is needed."
+    is optional
+descriptor MEPProjectType
+    documentation "Indicates the type of MEP project based on the location where the MEP services are held."
+    is optional
+string MedAlertIndicator
+    documentation "Alert indicator for a medical/health condition."
+    is optional
+    max length 100
+bool PFSIndicator
+    documentation "Indicates whether the State has determined the child to be priority for services for the duration of the enrollment period (as defined by section 1304(d) of ESSA)"
+    is optional
+string EnrollmentComment
+    documentation "A comment pertinent to a child's enrollment record indicating special circumstances or information. For example, the child was granted credits from a foreign school or while not enrolled in the migrant program or exceptions for assessment requirements."
+    is optional
+    max length 1000
+bool OutOfStateTranscriptIndicator
+    documentation "Indicates that a State has student transcripts from another State or country than his/her current enrollment."
+    is optional
+date ResidencyVerificationDate
+    documentation "The calendar date on which a child's residency for one day within the performance period has been confirmed."
+    is optional
+bool Algebra1OrEquivalentIndicator
+    documentation "Yes indicates the child has received full credit in a mathematics course that is Algebra 1 or its equivalent."
+    is optional

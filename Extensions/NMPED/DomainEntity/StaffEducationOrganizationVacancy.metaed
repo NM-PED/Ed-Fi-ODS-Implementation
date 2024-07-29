@@ -1,0 +1,17 @@
+Domain Entity StaffEducationOrganizationVacancy
+  documentation "District level vacancies by vacancy group."
+  domain entity EdFi.LocalEducationAgency
+      documentation "A reference to the LocalEducationAgency."
+      is part of identity
+  enumeration EdFi.SchoolYear
+      documentation "The school year vacancy is reported."
+      is part of identity
+  descriptor DataCollectionPeriod
+      documentation "Collection period of data ie. 40D, 80D, 120D, and EOY."
+      is part of identity
+  descriptor VacancyGroup
+      documentation "Staff category for which vacancy will be reported."
+      is part of identity
+  integer VacancyCount 
+      documentation "Count of vacancies for district level."
+      is required

@@ -1,0 +1,6 @@
+Association EdFi.StudentSchoolAssociation additions
+bool GraduationIndicator
+    documentation "Specify if the student has graduated.
+                  1 = Yes graduated
+                  0 = No not graduated"
+    is required
