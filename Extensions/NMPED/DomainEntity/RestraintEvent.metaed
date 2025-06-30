@@ -1,0 +1,6 @@
+Domain Entity EdFi.RestraintEvent additions
+  descriptor RestraintType
+      documentation "Type restraint employed on student."
+      is required
+        
+   

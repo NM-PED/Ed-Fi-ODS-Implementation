@@ -1,0 +1,6 @@
+// Change ID 252615 BEP
+// *** Separating control table for BEP Program Languages allowing SIS vendors
+// *** to leverage a controlled list instead of hard coding.  This also prevents
+// *** languages not approved by BMEP from being submitted.
+Descriptor BEPProgramLanguage
+    documentation "This descriptor describes the approved languages used for the BEP program."

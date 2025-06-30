@@ -1,0 +1,19 @@
+
+// Change ID 252623 and 252610
+// *** ExpectedLateIEPDate is associated with 252623 and 
+// *** and AnnualIEPReviewDate/ExpectedLateIEPDate
+// *** purpose is to record multiple IEP Begin and review dates.
+Domain Entity StudentSpecialEducationProgramAssociationIEPDates
+    documentation "Dates related to students IEP."
+    association EdFi.StudentSpecialEducationProgramAssociation
+        documentation "The student program association."
+        is part of identity
+    date IEPBeginDate
+        documentation "The effective date of most recent IEP."
+        is part of identity
+    date AnnualIEPReviewDate
+        documentation "The date of last IEP review."
+        is required
+    date ExpectedLateIEPDate
+        documentation "Anticipated date for a late IEP."
+        is optional

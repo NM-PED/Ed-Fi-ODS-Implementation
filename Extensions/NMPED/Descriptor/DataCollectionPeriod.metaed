@@ -1,0 +1,2 @@
+Descriptor DataCollectionPeriod
+    documentation "Collection period of data ie. 40D, 80D, 120D, and EOY."

@@ -1,0 +1,35 @@
+Association EdFi.StudentProgramAssociation additions
+  descriptor ParticipationInformation
+      documentation "Indicates the program participation information."
+      is optional
+    descriptor ProgramIntensity
+        documentation "Indicates the program Intensity."
+        is optional
+
+    // START: Chang ID 252615 BEP
+    // *** Approved languages used for the BEP program
+    //descriptor EdFi.Language
+    descriptor BEPProgramLanguage
+        //documentation "Language for students participating in BEP"
+        documentation "Approved languages used for the BEP program."
+        is optional
+        //role name BEPProgramLanguage
+    // END: Chang ID 252615 BEP
+
+    // START: Chang ID 252612 Days Offered/Attended
+    // *** Approved languages used for the BEP program
+    integer DaysOffered
+        documentation "Total number of days the program was offered."
+        is optional
+
+    integer DaysAttended
+        documentation "Total number of days the student attended the program."
+        is optional
+    // END: Chang ID 252612 Days Offered/Attended
+    // *** Approved languages used for the BEP program
+
+    common extension EdFi.Service
+        documentation "Extended fields for Service ServiceFrequency"
+        is optional collection
+        
+   

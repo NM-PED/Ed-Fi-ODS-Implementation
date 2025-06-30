@@ -1,0 +1,2 @@
+Descriptor MEPProjectType
+    documentation "Indicates the type of MEP project based on the location where the MEP services are held"

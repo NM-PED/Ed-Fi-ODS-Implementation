@@ -1,0 +1,38 @@
+Association EdFi.StudentEducationOrganizationAssociation additions
+    date Grade09Entry
+        documentation "This field holds the date when a student entered the ninth grade."
+        is optional
+    date PostSecondarySignedPlanDate
+        documentation "The postsecondary plans' most recent update and signature date."
+        is optional
+    descriptor DentalExaminationVerificationCode
+        documentation "This code for the dental examination performed."
+        is optional
+    descriptor MilitaryFamily
+        documentation "Indicator to identify the military stuats of the student's family"
+        is optional
+    descriptor GenderIdentity
+        documentation "Indicates the gender the student identifies with."
+        is optional
+    common extension EdFi.StudentCharacteristic
+        documentation "Additional field to record Level of Integration for Gifted Students"
+        is optional collection
+        
+    // START: Chang ID 252616 Digital Resources
+    // *** Survey of automated speed test for internet
+    //decimal InternetMBPerSecSpeedDownload
+    //    documentation "Internet download speed in megabytes per sec."
+    //    is optional
+    //    total digits 9
+    //    decimal places 2
+    //    min value 0 
+    //decimal InternetMBPerSecSpeedUpload
+    //    documentation "Internet upload speed in megabytes per sec."
+    //    is optional
+    //    total digits 9
+    //    decimal places 2
+    //    min value 0
+    //date InternetSpeedTestDateTime
+    //    documentation "Date and time internet download and upload speed test was conducted."
+    //    is optional
+    // END: Chang ID 252616 Digital Resources

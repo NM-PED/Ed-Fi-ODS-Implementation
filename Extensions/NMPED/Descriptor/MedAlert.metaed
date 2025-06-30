@@ -1,0 +1,4 @@
+// Chang ID 252648 Med Alert
+// *** Creating a control table for Med Alert instead of a free form text entry.
+Descriptor MedAlert
+    documentation "Alert indicator for a medical or health condition."

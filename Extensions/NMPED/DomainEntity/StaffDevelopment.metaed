@@ -1,0 +1,35 @@
+Domain Entity StaffDevelopment
+    documentation "The development activities a staff has accomplished."
+domain entity EdFi.Staff
+    documentation "A reference to the Staff member."
+    is part of identity
+domain entity EdFi.EducationOrganization
+    documentation "A reference to the Education Organization representing the context of the student information."
+    is part of identity
+date StartDate
+    documentation "The date the staff development started."
+    is part of identity
+date EndDate
+    documentation "The date the staff development ended."
+    is optional
+descriptor StaffDevelopmentActivityCode
+    documentation "The staff development activity code."
+    is required
+descriptor StaffDevelopmentPurposeCode
+    documentation "The staff development purpose code."
+    is optional
+integer ActivityHours
+    documentation "The hours the activity took."
+    is required
+decimal StaffCreditsEarned
+  documentation "The credits earned by the staff."
+  is optional
+  total digits 7
+  decimal places 2
+bool MentorTraining
+    documentation "This data will be used to determine whether the Mentor has completed a Mentor Training."
+    is optional
+shared string EdFi.UniqueId
+    documentation "The staff ID of the mentor"
+    is optional
+    role name MentorId

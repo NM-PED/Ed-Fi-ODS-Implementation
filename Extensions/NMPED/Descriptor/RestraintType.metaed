@@ -1,0 +1,4 @@
+// Change ID 252644 Restraint/
+// *** Separating control table for restraint.
+Descriptor RestraintType
+    documentation "Type restraint employed on student."
