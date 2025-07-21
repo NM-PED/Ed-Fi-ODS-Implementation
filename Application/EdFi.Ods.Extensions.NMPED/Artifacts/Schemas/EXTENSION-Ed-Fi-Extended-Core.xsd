@@ -441,7 +441,7 @@
               <xs:documentation>The effective date of most recent IEP.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AnnualIEPReviewDate" type="xs:date">
+          <xs:element name="AnnualIEPReviewDate" type="xs:date" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The date of last IEP review.</xs:documentation>
             </xs:annotation>

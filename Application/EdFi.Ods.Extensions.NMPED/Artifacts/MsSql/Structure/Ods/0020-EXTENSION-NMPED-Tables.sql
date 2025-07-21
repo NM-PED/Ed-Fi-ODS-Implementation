@@ -799,7 +799,7 @@ CREATE TABLE [nmped].[StudentSpecialEducationProgramAssociationIEPDates] (
     [ProgramName] [NVARCHAR](60) NOT NULL,
     [ProgramTypeDescriptorId] [INT] NOT NULL,
     [StudentUSI] [INT] NOT NULL,
-    [AnnualIEPReviewDate] [DATE] NOT NULL,
+    [AnnualIEPReviewDate] [DATE] NULL,
     [ExpectedLateIEPDate] [DATE] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,

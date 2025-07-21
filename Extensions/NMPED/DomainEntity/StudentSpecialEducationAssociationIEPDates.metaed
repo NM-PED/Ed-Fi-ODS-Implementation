@@ -13,7 +13,7 @@ Domain Entity StudentSpecialEducationProgramAssociationIEPDates
         is part of identity
     date AnnualIEPReviewDate
         documentation "The date of last IEP review."
-        is required
+        is optional
     date ExpectedLateIEPDate
         documentation "Anticipated date for a late IEP."
         is optional

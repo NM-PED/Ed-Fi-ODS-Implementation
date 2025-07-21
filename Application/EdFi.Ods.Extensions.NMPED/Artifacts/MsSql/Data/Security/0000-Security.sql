@@ -1,3 +1,23 @@
+/* NMPED 2025
+ * 300 Don Gaspar Ave.
+ * Santa Fe, NM 87501
+ * Information Technology Division
+ * By: Tong | Database Administrator II
+ * Email: tong.savath@ped.nm.gov
+ * Date: 06/30/2025
+ * Desc: This script was copy and pasted from SY2025 EdFi data standard 3.3
+ *		and modified to be compatible with data standard 4.x
+ *
+ * Alt Id: 001
+ * Alt By: Tong | DBA II
+ * Alt Date: 06/30/2025
+ * Alt Title: Modified for Compatibility
+ * Alt Desc: Modified for compatibility with data standard 4.x
+ *
+ * *** 0000-Security v1.0.0 ***
+ * *** 0000-Security v2.0.0 ***
+ */
+
 -- Setting the application to Ed-Fi ODS API
 DECLARE @ApplicationId INT
 SELECT @ApplicationId = ApplicationId FROM [dbo].[Applications] WHERE ApplicationName = 'Ed-Fi ODS API';
@@ -82,13 +102,16 @@ VALUES ('staffEducationOrganizationDigitalEquity', 'staffEducationOrganizationDi
         ,@RelationshipBasedDataClaimId, @ApplicationId);
 */
 
+
 INSERT INTO [dbo].[ResourceClaims] ([DisplayName], [ResourceName] 
 								   ,[ClaimName] 
 								   ,[ParentResourceClaimId], [Application_ApplicationId])
 VALUES ('staffEducationOrganizationVacancy', 'staffEducationOrganizationVacancy'
         ,'http://ed-fi.org/ods/identity/claims/nmped/staffEducationOrganizationVacancy'
         ,@RelationshipBasedDataClaimId, @ApplicationId);
-		
+	
+
+
 -- *** Descriptors Security -- Adding these under the inherited permissions from System Descriptors ***
 -- *** These inserts should match the MetaEd entries under NMPEDMEtaED.Decriptor ***
 
@@ -141,69 +164,194 @@ Set ParentResourceClaimId = NULL
 where displayName in ( 'program', 'course');
 
 -- give read permissions for all applications
-insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
-SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
-	FROM ClaimSets
-	JOIN Actions
-		ON Actions.ActionName = 'Read'
-	JOIN ResourceClaims
-		ON displayName in ( 'program', 'course');
+
+/* START Alt Id: 001
+ * --------*/
+
+--insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
+--SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
+--	FROM ClaimSets
+--	JOIN Actions
+--		ON Actions.ActionName = 'Read'
+--	JOIN ResourceClaims
+--		ON displayName in ( 'program', 'course');
+
+;WITH CTE AS (
+
+	SELECT 
+		 [Actions].[ActionId]
+		,[ClaimSets].[ClaimSetId]
+		,[ResourceClaimId]
+	FROM [dbo].[ClaimSets]
+	JOIN [dbo].[Actions]
+		ON [Actions].[ActionName] = 'Read'
+	JOIN [dbo].[ResourceClaims]
+		ON [displayName] in ('program', 'course')
+		
+)INSERT INTO [dbo].[ClaimSetResourceClaimActions](
+	 [ActionId]
+	,[ClaimSetId]
+	,[ResourceClaimId]
+)SELECT 
+	 [c].[ActionId]
+	,[c].[ClaimSetId]
+	,[c].[ResourceClaimId]
+FROM CTE c
+LEFT JOIN [dbo].[ClaimSetResourceClaimActions] claim
+	 ON [c].[ActionId]		  = [claim].[ActionId]
+	AND [c].[ClaimSetId]	  = [claim].[ClaimSetId]
+	AND [c].[ResourceClaimId] = [claim].[ResourceClaimId]
+WHERE 1 = 1
+	AND [claim].[ActionId] IS NULL
+
 		
 -- attach authorization strategy to changed claims
-insert into [ResourceClaimAuthorizationMetadatas] (Action_ActionId, ResourceClaim_ResourceClaimId, AuthorizationStrategy_AuthorizationStrategyId)
-SELECT distinct Actions.ActionId, ResourceClaimId, AuthorizationStrategies.AuthorizationStrategyId
-	FROM ClaimSets
-	JOIN Actions
-		ON Actions.ActionName = 'Read'
-	JOIN ResourceClaims
-		ON displayName in ( 'program', 'course')
-	join AuthorizationStrategies
-		ON AuthorizationStrategies.DisplayName = 'No Further Authorization Required'
-	left join ResourceClaimAuthorizationMetadatas on ResourceClaim_ResourceClaimId = ResourceClaimId and Action_ActionId = actions.ActionId where ResourceClaim_ResourceClaimId is null
+
+--insert into [ResourceClaimAuthorizationMetadatas] (Action_ActionId, ResourceClaim_ResourceClaimId, AuthorizationStrategy_AuthorizationStrategyId)
+--SELECT distinct Actions.ActionId, ResourceClaimId, AuthorizationStrategies.AuthorizationStrategyId
+--	FROM ClaimSets
+--	JOIN Actions
+--		ON Actions.ActionName = 'Read'
+--	JOIN ResourceClaims
+--		ON displayName in ( 'program', 'course')
+--	join AuthorizationStrategies
+--		ON AuthorizationStrategies.DisplayName = 'No Further Authorization Required'
+--	--left join ResourceClaimAuthorizationMetadatas on ResourceClaim_ResourceClaimId = ResourceClaimId and Action_ActionId = actions.ActionId where ResourceClaim_ResourceClaimId is null
+--	LEFT JOIN [dbo].[ResourceClaimActionAuthorizationStrategies]
+--		 ON [ResourceClaimActionAuthorizationStrategyId] = [ResourceClaimId]
+--		AND [ResourceClaimActionId]						 = [ActionId]
+--	WHERE [ResourceClaimActionAuthorizationStrategyId] IS NULL
+
+DROP INDEX [IX_ResourceClaimActionId_AuthorizationStrategyId] ON [dbo].[ResourceClaimActionAuthorizationStrategies]
+
+SET IDENTITY_INSERT [dbo].[ResourceClaimActionAuthorizationStrategies] ON
+
+;WITH CTE AS (
+
+	SELECT DISTINCT 
+		 [Actions].[ActionId]
+		,[ResourceClaimId]
+		,[AuthorizationStrategies].[AuthorizationStrategyId]
+	FROM [dbo].[ClaimSets]
+	JOIN [dbo].[Actions]
+		ON [Actions].[ActionName] = 'Read'
+
+	JOIN [dbo].[ResourceClaims]
+		ON [displayName] IN (
+			 'program'
+			,'course'
+		)
+	JOIN [dbo].[AuthorizationStrategies]
+		ON [AuthorizationStrategies].[DisplayName] = 'No Further Authorization Required'
+
+)INSERT INTO [dbo].[ResourceClaimActionAuthorizationStrategies](
+	 [ResourceClaimActionId]
+	,[ResourceClaimActionAuthorizationStrategyId]
+	,[AuthorizationStrategyId]
+)SELECT 
+	 [c].[ActionId]
+	,[c].[ResourceClaimId]
+	,[c].[AuthorizationStrategyId]
+FROM CTE c
+LEFT JOIN [dbo].[ResourceClaimActionAuthorizationStrategies] s
+	 ON [c].[ResourceClaimId]		  = [s].[ResourceClaimActionAuthorizationStrategyId]
+	AND [c].[ActionId]				  = [s].[ResourceClaimActionId]
+	AND [c].[AuthorizationStrategyId] = [s].[AuthorizationStrategyId]
+
+WHERE 1 = 1
+	AND [s].[ResourceClaimActionAuthorizationStrategyId] IS NULL
+
+SET IDENTITY_INSERT [dbo].[ResourceClaimActionAuthorizationStrategies] OFF
 
 
 -- give full control for admin app
-insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
-SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
-	FROM ClaimSets
-	JOIN Actions
-		ON Actions.ActionName != 'Read'
-		AND ClaimSetName = 'Ed-Fi ODS Admin App'
-	JOIN ResourceClaims
-		ON displayName in ( 'program', 'course');
+
+--insert into ClaimSetResourceClaims (Action_ActionId, ClaimSet_ClaimSetId, ResourceClaim_ResourceClaimId)
+--SELECT Actions.ActionId, ClaimSets.ClaimSetId, ResourceClaimId
+--	FROM ClaimSets
+--	JOIN Actions
+--		ON Actions.ActionName != 'Read'
+--		AND ClaimSetName = 'Ed-Fi ODS Admin App'
+--	JOIN ResourceClaims
+--		ON displayName in ( 'program', 'course');
+
+;WITH CTE AS (
+
+	SELECT 
+		 [Actions].[ActionId]
+		,[ClaimSets].[ClaimSetId]
+		,[ResourceClaimId]
+	FROM [dbo].[ClaimSets]
+	JOIN [dbo].[Actions]
+		ON [Actions].[ActionName] != 'Read'
+		AND [ClaimSetName] = 'Ed-Fi ODS Admin App'
+	JOIN [dbo].[ResourceClaims]
+		ON [displayName] IN (
+			 'program'
+			,'course'
+		)
+
+)INSERT INTO [dbo].[ClaimSetResourceClaimActions](
+	 [ActionId]
+	,[ClaimSetId]
+	,[ResourceClaimId]
+)SELECT 
+	 [c].[ActionId]
+	,[c].[ClaimSetId]
+	,[c].[ResourceClaimId]
+FROM CTE c
+LEFT JOIN [dbo].[ClaimSetResourceClaimActions] a
+	 ON [c].[ActionId]		  = [a].[ActionId]
+	AND [c].[ClaimSetId]	  = [a].[ClaimSetId]
+	AND [c].[ResourceClaimId] = [a].[ResourceClaimId]
+WHERE 1 = 1
+	AND [a].[ClaimSetId] IS NULL
+
+
 
 -- take actions other then read away for sandbox and SIS Vendor users on everything Ed Org related
-delete ClaimSetResourceClaims
-where ResourceClaim_ResourceClaimId = 
+
+--delete ClaimSetResourceClaims
+DELETE [dbo].[ClaimSetResourceClaimActions]
+--where ResourceClaim_ResourceClaimId =
+WHERE [ResourceClaimId] =
 	(Select ResourceClaimId
 	FROM ResourceClaims
 	where ResourceName like 'educationOrganizations')
-and ClaimSet_ClaimSetId IN
+--and ClaimSet_ClaimSetId IN
+AND [ClaimSetId] IN
 	(SELECT claimSetId
 	FROM claimSets
 	where ClaimSetName in ( 'Ed-Fi Sandbox'))
-and Action_ActionId NOT IN
+--and Action_ActionId NOT IN 
+AND [ActionId] NOT IN
 	(SELECT actionId
 	FROM actions
 	where actionName in ('Read')
 	);
 
-delete ClaimSetResourceClaims
-where ResourceClaim_ResourceClaimId = 
+
+--delete ClaimSetResourceClaims
+DELETE [dbo].[ClaimSetResourceClaimActions]
+--where ResourceClaim_ResourceClaimId = 
+WHERE [ResourceClaimId] =
 	(Select ResourceClaimId
 	FROM ResourceClaims
 	where ResourceName like 'educationOrganizations')
-and ClaimSet_ClaimSetId IN
+--and ClaimSet_ClaimSetId IN
+AND [ClaimSetId] IN
 	(SELECT claimSetId
 	FROM claimSets
 	where ClaimSetName in ( 'SIS Vendor'))
-and Action_ActionId NOT IN
+--and Action_ActionId NOT IN
+AND [ActionId] NOT IN
 	(SELECT actionId
 	FROM actions
 	where actionName in ('Read')
 	);
 
-
+/* END Alt Id: 001
+ * --------*/
 
 -- *** Legacy insert methods ***
 	-- Base Parent nmpedDescriptors parent claim
